@@ -1,0 +1,134 @@
+var _user$project$Main$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		switch (_p0.ctor) {
+			case 'ChangePage':
+				return _elm_lang$core$Native_Utils.update(
+					model,
+					{page: _p0._0});
+			case 'LoginMsg':
+				return _elm_lang$core$Native_Utils.update(
+					model,
+					{
+						login: A2(_user$project$Login$update, _p0._0, model.login)
+					});
+			default:
+				return _elm_lang$core$Native_Utils.update(
+					model,
+					{
+						users: A2(_user$project$Users$update, _p0._0, model.users)
+					});
+		}
+	});
+var _user$project$Main$Model = F3(
+	function (a, b, c) {
+		return {page: a, login: b, users: c};
+	});
+var _user$project$Main$UsersPage = {ctor: 'UsersPage'};
+var _user$project$Main$LoginPage = {ctor: 'LoginPage'};
+var _user$project$Main$initModel = {page: _user$project$Main$LoginPage, login: _user$project$Login$initModel, users: _user$project$Users$initModel};
+var _user$project$Main$UsersMsg = function (a) {
+	return {ctor: 'UsersMsg', _0: a};
+};
+var _user$project$Main$LoginMsg = function (a) {
+	return {ctor: 'LoginMsg', _0: a};
+};
+var _user$project$Main$ChangePage = function (a) {
+	return {ctor: 'ChangePage', _0: a};
+};
+var _user$project$Main$view = function (model) {
+	var page = function () {
+		var _p1 = model.page;
+		if (_p1.ctor === 'LoginPage') {
+			return A2(
+				_elm_lang$html$Html_App$map,
+				_user$project$Main$LoginMsg,
+				_user$project$Login$view(model.login));
+		} else {
+			return A2(
+				_elm_lang$html$Html_App$map,
+				_user$project$Main$UsersMsg,
+				_user$project$Users$view(model.users));
+		}
+	}();
+	return A2(
+		_elm_lang$html$Html$div,
+		_elm_lang$core$Native_List.fromArray(
+			[]),
+		_elm_lang$core$Native_List.fromArray(
+			[
+				A2(
+				_elm_lang$html$Html$div,
+				_elm_lang$core$Native_List.fromArray(
+					[]),
+				_elm_lang$core$Native_List.fromArray(
+					[
+						A2(
+						_elm_lang$html$Html$a,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html_Attributes$href('#'),
+								_elm_lang$html$Html_Events$onClick(
+								_user$project$Main$ChangePage(_user$project$Main$LoginPage))
+							]),
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html$text('Login')
+							])),
+						A2(
+						_elm_lang$html$Html$span,
+						_elm_lang$core$Native_List.fromArray(
+							[]),
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html$text(' | ')
+							])),
+						A2(
+						_elm_lang$html$Html$a,
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html_Attributes$href('#'),
+								_elm_lang$html$Html_Events$onClick(
+								_user$project$Main$ChangePage(_user$project$Main$UsersPage))
+							]),
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html$text('Users')
+							])),
+						A2(
+						_elm_lang$html$Html$hr,
+						_elm_lang$core$Native_List.fromArray(
+							[]),
+						_elm_lang$core$Native_List.fromArray(
+							[])),
+						page,
+						A2(
+						_elm_lang$html$Html$hr,
+						_elm_lang$core$Native_List.fromArray(
+							[]),
+						_elm_lang$core$Native_List.fromArray(
+							[])),
+						A2(
+						_elm_lang$html$Html$h4,
+						_elm_lang$core$Native_List.fromArray(
+							[]),
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html$text('App Model:')
+							])),
+						A2(
+						_elm_lang$html$Html$p,
+						_elm_lang$core$Native_List.fromArray(
+							[]),
+						_elm_lang$core$Native_List.fromArray(
+							[
+								_elm_lang$html$Html$text(
+								_elm_lang$core$Basics$toString(model))
+							]))
+					]))
+			]));
+};
+var _user$project$Main$main = {
+	main: _elm_lang$html$Html_App$beginnerProgram(
+		{model: _user$project$Main$initModel, view: _user$project$Main$view, update: _user$project$Main$update})
+};

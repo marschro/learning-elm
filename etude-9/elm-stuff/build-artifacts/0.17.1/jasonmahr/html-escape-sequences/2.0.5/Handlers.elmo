@@ -1,0 +1,58 @@
+var _jasonmahr$html_escape_sequences$Handlers$hexToInt = function (_p0) {
+	return A3(
+		_elm_lang$core$String$foldl,
+		F2(
+			function (hexDigit, $int) {
+				return (($int * 16) + A2(
+					_elm_lang$core$Basics_ops['%'],
+					_elm_lang$core$Char$toCode(hexDigit),
+					39)) - 9;
+			}),
+		0,
+		_elm_lang$core$String$toLower(_p0));
+};
+var _jasonmahr$html_escape_sequences$Handlers$escapeTypes = _elm_lang$core$Native_List.fromArray(
+	[
+		{
+		ctor: '_Tuple2',
+		_0: '&#x([0-9a-fA-F]+);',
+		_1: function (_p1) {
+			return _elm_lang$core$Maybe$Just(
+				_jasonmahr$html_escape_sequences$Handlers$hexToInt(_p1));
+		}
+	},
+		{
+		ctor: '_Tuple2',
+		_0: '&#([0-9]+);',
+		_1: function (_p2) {
+			return _elm_lang$core$Result$toMaybe(
+				_elm_lang$core$String$toInt(_p2));
+		}
+	},
+		{ctor: '_Tuple2', _0: '&([0-9a-zA-Z]+);', _1: _jasonmahr$html_escape_sequences$NamedEscapes$getNamedEscape}
+	]);
+var _jasonmahr$html_escape_sequences$Handlers$handleMatches = function (regEx) {
+	var handleMatch = F2(
+		function (sToCode, m) {
+			return A2(
+				_elm_lang$core$Maybe$withDefault,
+				m.match,
+				A2(
+					_elm_lang$core$Maybe$map,
+					_jasonmahr$html_escape_sequences$NamedEscapes$codeToStr,
+					sToCode(
+						_jasonmahr$html_escape_sequences$NamedEscapes$subm(m))));
+		});
+	return function (_p3) {
+		return A3(
+			_jasonmahr$html_escape_sequences$NamedEscapes$regexAll,
+			_elm_lang$core$Regex$replace,
+			regEx,
+			handleMatch(_p3));
+	};
+};
+var _jasonmahr$html_escape_sequences$Handlers$handleEscapes = A2(
+	_elm_lang$core$Basics$flip,
+	_elm_lang$core$List$foldl(
+		_elm_lang$core$Basics$uncurry(_jasonmahr$html_escape_sequences$Handlers$handleMatches)),
+	_jasonmahr$html_escape_sequences$Handlers$escapeTypes);

@@ -1,0 +1,6 @@
+var _jasonmahr$html_escape_sequences$Unicode$unEsc = _jasonmahr$html_escape_sequences$Handlers$handleEscapes;
+var _jasonmahr$html_escape_sequences$Unicode$text$ = function (_p0) {
+	return _elm_lang$html$Html$text(
+		_jasonmahr$html_escape_sequences$Unicode$unEsc(_p0));
+};
+var _jasonmahr$html_escape_sequences$Unicode$txt = _jasonmahr$html_escape_sequences$Unicode$text$;
