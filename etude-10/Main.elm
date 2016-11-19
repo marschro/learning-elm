@@ -3,18 +3,13 @@ module Main exposing (..)
 import Html exposing (Html, text, h1, div, img, input, form, ul, li, i, hr, br)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
-import Html.App as App
 import String
 import Random
 
 
---import Debug
---import Uuid
-
-
-main : Program Never
+main : Program Never Model Msg
 main =
-    App.program
+    Html.program
         { init = init
         , view = view
         , update = update
@@ -178,7 +173,7 @@ userView user =
             [ div [] [ text ("ID: " ++ toString user.id) ]
             , div [] [ text ("Name: " ++ user.name) ]
             , div [] [ text ("Age: " ++ ageAsString) ]
-            , input [ type' "button", value "Delete", onClick (Delete user.id) ] []
+            , input [ type_ "button", value "Delete", onClick (Delete user.id) ] []
             ]
 
 
@@ -192,9 +187,9 @@ view model =
         div [ class "wrapper" ]
             [ h1 [] [ text ("We have " ++ toString (List.length model.users) ++ " (deleted: " ++ toString deletedUsers ++ ")") ]
             , Html.form []
-                [ input [ type' "text", onInput InsertName, placeholder "Name", value model.name ] []
-                , input [ type' "text", onInput InsertAge, placeholder "Age", value model.age ] []
-                , input [ type' "button", onClick InitNewUser, value "Add new user" ] []
+                [ input [ type_ "text", onInput InsertName, placeholder "Name", value model.name ] []
+                , input [ type_ "text", onInput InsertAge, placeholder "Age", value model.age ] []
+                , input [ type_ "button", onClick InitNewUser, value "Add new user" ] []
                 ]
             , div [] [ text model.message ]
             , userListView model
