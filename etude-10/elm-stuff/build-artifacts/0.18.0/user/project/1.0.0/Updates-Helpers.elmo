@@ -10,7 +10,7 @@ var _user$project$Updates_Helpers$validateAge = function (age) {
 			return 'Age must be a number!';
 		} else {
 			var _p1 = _p0._0;
-			return (_elm_lang$core$Native_Utils.cmp(_p1, 100) > 0) ? 'Haha... that would be old' : ((_elm_lang$core$Native_Utils.cmp(_p1, 10) < 0) ? 'Pretty young.. hugh?' : 'accetable');
+			return (_elm_lang$core$Native_Utils.cmp(_p1, 100) > 0) ? 'Haha... that would be old' : ((_elm_lang$core$Native_Utils.cmp(_p1, 10) < 0) ? 'Pretty young.. hugh?' : 'Good age');
 		}
 	}();
 	var newAge = function () {

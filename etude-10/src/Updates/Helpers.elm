@@ -23,7 +23,7 @@ validateAge age =
                     else if int < 10 then
                         "Pretty young.. hugh?"
                     else
-                        "accetable"
+                        "Good age"
     in
         ( newAge, newMessage )
 
