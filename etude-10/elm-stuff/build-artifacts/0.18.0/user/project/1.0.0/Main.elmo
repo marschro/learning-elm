@@ -1,6 +1,6 @@
-var _user$project$Main$init = {ctor: '_Tuple2', _0: _user$project$Models_Main$initModel, _1: _elm_lang$core$Platform_Cmd$none};
+var _user$project$Main$init = {ctor: '_Tuple2', _0: _user$project$Widgets_UserAdministration_Model$initModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$Main$subscriptions = function (model) {
 	return _elm_lang$core$Platform_Sub$none;
 };
 var _user$project$Main$main = _elm_lang$html$Html$program(
-	{init: _user$project$Main$init, view: _user$project$Views_Main$mainView, update: _user$project$Updates_Main$update, subscriptions: _user$project$Main$subscriptions})();
+	{init: _user$project$Main$init, view: _user$project$Widgets_UserAdministration_View$mainView, update: _user$project$Widgets_UserAdministration_Update$update, subscriptions: _user$project$Main$subscriptions})();

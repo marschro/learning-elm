@@ -1,8 +1,8 @@
-module Updates.Main exposing (..)
+module Widgets.UserAdministration.Update exposing (..)
 
-import Models.Main exposing (..)
-import Views.Main exposing (..)
-import Updates.Helpers as Utils
+import Widgets.UserAdministration.Model exposing (..)
+import Widgets.UserAdministration.View exposing (..)
+import Helpers.General as Utils
 import Random
 
 

@@ -1,9 +1,9 @@
 module Main exposing (..)
 
 import Html exposing (Html)
-import Models.Main exposing (..)
-import Views.Main exposing (..)
-import Updates.Main exposing (..)
+import Widgets.UserAdministration.Model exposing (..)
+import Widgets.UserAdministration.View exposing (..)
+import Widgets.UserAdministration.Update exposing (..)
 
 
 main : Program Never Model Msg

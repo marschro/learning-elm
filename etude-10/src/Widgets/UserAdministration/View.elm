@@ -1,9 +1,9 @@
-module Views.Main exposing (..)
+module Widgets.UserAdministration.View exposing (..)
 
 import Html exposing (Html, text, h1, div, img, input, form, ul, li, i, hr, br)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
-import Models.Main exposing (..)
+import Widgets.UserAdministration.Model exposing (..)
 
 
 type Msg

@@ -1,4 +1,4 @@
-module Updates.Helpers exposing (..)
+module Helpers.General exposing (..)
 
 
 validateAge : String -> ( String, String )
