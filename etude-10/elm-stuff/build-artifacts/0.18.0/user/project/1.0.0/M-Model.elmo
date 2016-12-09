@@ -1,0 +1,15 @@
+var _user$project$M_Model$initModel = {
+	users: {ctor: '[]'},
+	name: '',
+	age: '',
+	message: '',
+	button: 'Save'
+};
+var _user$project$M_Model$Model = F5(
+	function (a, b, c, d, e) {
+		return {users: a, name: b, age: c, message: d, button: e};
+	});
+var _user$project$M_Model$User = F4(
+	function (a, b, c, d) {
+		return {id: a, name: b, age: c, deleted: d};
+	});

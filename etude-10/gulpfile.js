@@ -8,7 +8,7 @@ var gulp = require('gulp'),
   clear = require('clear'),
   counter = 0;
 
-var cmd = 'elm make ./Main.elm --output ./assets/bundle.js';
+var cmd = 'elm make ./src/Main.elm --output ./assets/bundle.js';
 clear();
 gulp.task('default', ['server', 'watch', 'elm']);
 

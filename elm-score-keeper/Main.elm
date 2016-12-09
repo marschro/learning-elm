@@ -3,7 +3,6 @@ module Main exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
-import Html.App as App
 import String
 
 
@@ -213,10 +212,10 @@ playerForm : Model -> Html Msg
 playerForm model =
     Html.form [ onSubmit Save ]
         [ input
-            [ type' "text", placeholder "Add/Edit player...", onInput Input, value model.name ]
+            [ type_ "text", placeholder "Add/Edit player...", onInput Input, value model.name ]
             []
-        , button [ type' "submit" ] [ text "Save" ]
-        , button [ type' "button", onClick Cancel ] [ text "Cancel" ]
+        , button [ type_ "submit" ] [ text "Save" ]
+        , button [ type_ "button", onClick Cancel ] [ text "Cancel" ]
         ]
 
 
@@ -262,8 +261,8 @@ player player =
     li []
         [ i [ class "edit", onClick (Edit player) ] []
         , div [] [ text player.name ]
-        , button [ type' "button", onClick (Score player 2) ] [ text "2pt" ]
-        , button [ type' "button", onClick (Score player 3) ] [ text "3pt" ]
+        , button [ type_ "button", onClick (Score player 2) ] [ text "2pt" ]
+        , button [ type_ "button", onClick (Score player 3) ] [ text "3pt" ]
         , div [] [ text (toString player.point) ]
         ]
 
@@ -279,4 +278,4 @@ playerSection model =
 
 main : Program Never
 main =
-    App.beginnerProgram { model = initModel, view = view, update = update }
+    Html.beginnerProgram { model = initModel, view = view, update = update }

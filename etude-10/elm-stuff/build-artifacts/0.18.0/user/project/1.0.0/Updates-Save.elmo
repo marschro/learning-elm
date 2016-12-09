@@ -1,0 +1,3 @@
+var _user$project$Updates_Save$save = function (model) {
+	return model;
+};

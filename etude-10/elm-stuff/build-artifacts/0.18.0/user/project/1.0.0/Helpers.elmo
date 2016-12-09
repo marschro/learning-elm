@@ -1,0 +1,28 @@
+var _user$project$Helpers$save = function (model) {
+	return model;
+};
+var _user$project$Helpers$validateName = function (name) {
+	var newMessage = 'valid name';
+	var newName = name;
+	return {ctor: '_Tuple2', _0: newName, _1: newMessage};
+};
+var _user$project$Helpers$validateAge = function (age) {
+	var newMessage = function () {
+		var _p0 = _elm_lang$core$String$toInt(age);
+		if (_p0.ctor === 'Err') {
+			return 'Age must be a number!';
+		} else {
+			var _p1 = _p0._0;
+			return (_elm_lang$core$Native_Utils.cmp(_p1, 100) > 0) ? 'Haha... that would be old' : ((_elm_lang$core$Native_Utils.cmp(_p1, 10) < 0) ? 'Pretty young.. hugh?' : 'accetable');
+		}
+	}();
+	var newAge = function () {
+		var _p2 = _elm_lang$core$String$toInt(age);
+		if (_p2.ctor === 'Err') {
+			return '';
+		} else {
+			return _elm_lang$core$Basics$toString(_p2._0);
+		}
+	}();
+	return {ctor: '_Tuple2', _0: newAge, _1: newMessage};
+};

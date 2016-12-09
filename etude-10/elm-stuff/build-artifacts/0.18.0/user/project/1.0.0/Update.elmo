@@ -1,0 +1,95 @@
+var _user$project$Update$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		switch (_p0.ctor) {
+			case 'InsertName':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{name: _p0._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'InsertAge':
+				var _p1 = _user$project$Helpers$validateAge(_p0._0);
+				var validAge = _p1._0;
+				var error = _p1._1;
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{age: validAge, message: error}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'UpdateOrSave':
+				return {
+					ctor: '_Tuple2',
+					_0: model,
+					_1: A2(
+						_elm_lang$core$Random$generate,
+						_user$project$View$SaveNewUser,
+						A2(_elm_lang$core$Random$int, 111111, 999999))
+				};
+			case 'SaveNewUser':
+				if (_elm_lang$core$String$isEmpty(model.name)) {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{message: 'Please give a name'}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				} else {
+					var ageAsInt = function () {
+						var _p2 = _elm_lang$core$String$toInt(model.age);
+						if (_p2.ctor === 'Err') {
+							return _elm_lang$core$Maybe$Nothing;
+						} else {
+							return _elm_lang$core$Maybe$Just(_p2._0);
+						}
+					}();
+					var newUser = A4(_user$project$Model$User, _p0._0, model.name, ageAsInt, false);
+					var newUserList = {ctor: '::', _0: newUser, _1: model.users};
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{users: newUserList, name: '', age: '', message: ''}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				}
+			case 'Delete':
+				var newUserList = A2(
+					_elm_lang$core$List$map,
+					function (user) {
+						return _elm_lang$core$Native_Utils.eq(user.id, _p0._0) ? _elm_lang$core$Native_Utils.update(
+							user,
+							{deleted: true}) : user;
+					},
+					model.users);
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{users: newUserList}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			default:
+				var _p4 = _p0._0;
+				var userAge = function () {
+					var _p3 = _p4.age;
+					if (_p3.ctor === 'Nothing') {
+						return '';
+					} else {
+						return _elm_lang$core$Basics$toString(_p3._0);
+					}
+				}();
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{name: _p4.name, age: userAge, button: 'Update'}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+		}
+	});

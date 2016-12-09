@@ -1,0 +1,16 @@
+var _user$project$Models_Main$initModel = {
+	users: {ctor: '[]'},
+	name: '',
+	age: '',
+	userId: _elm_lang$core$Maybe$Nothing,
+	message: '',
+	button: 'Save'
+};
+var _user$project$Models_Main$Model = F6(
+	function (a, b, c, d, e, f) {
+		return {users: a, name: b, age: c, userId: d, message: e, button: f};
+	});
+var _user$project$Models_Main$User = F4(
+	function (a, b, c, d) {
+		return {id: a, name: b, age: c, deleted: d};
+	});
