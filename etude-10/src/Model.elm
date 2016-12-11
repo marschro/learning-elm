@@ -1,4 +1,4 @@
-module Widgets.UserAdministration.Model exposing (..)
+module Model exposing (..)
 
 
 type alias Model =

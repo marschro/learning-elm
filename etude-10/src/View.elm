@@ -1,18 +1,10 @@
-module Widgets.UserAdministration.View exposing (..)
+module View exposing (..)
 
 import Html exposing (Html, text, h1, div, img, input, form, ul, li, i, hr, br)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
-import Widgets.UserAdministration.Model exposing (..)
-
-
-type Msg
-    = InsertName String
-    | InsertAge String
-    | UpdateOrSave
-    | SaveUser Int
-    | DeleteUser Int
-    | EditUser User
+import Model exposing (..)
+import Update exposing (..)
 
 
 userListView : Model -> Html Msg

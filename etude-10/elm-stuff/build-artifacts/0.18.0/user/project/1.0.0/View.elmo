@@ -1,9 +1,3 @@
-var _user$project$View$Edit = function (a) {
-	return {ctor: 'Edit', _0: a};
-};
-var _user$project$View$Delete = function (a) {
-	return {ctor: 'Delete', _0: a};
-};
 var _user$project$View$userView = function (user) {
 	var ageAsString = function () {
 		var _p0 = user.age;
@@ -65,7 +59,7 @@ var _user$project$View$userView = function (user) {
 									_1: {
 										ctor: '::',
 										_0: _elm_lang$html$Html_Events$onClick(
-											_user$project$View$Delete(user.id)),
+											_user$project$Update$DeleteUser(user.id)),
 										_1: {ctor: '[]'}
 									}
 								}
@@ -84,7 +78,7 @@ var _user$project$View$userView = function (user) {
 										_1: {
 											ctor: '::',
 											_0: _elm_lang$html$Html_Events$onClick(
-												_user$project$View$Edit(user)),
+												_user$project$Update$EditUser(user)),
 											_1: {ctor: '[]'}
 										}
 									}
@@ -116,16 +110,6 @@ var _user$project$View$userListView = function (model) {
 					return _.name;
 				},
 				newList)));
-};
-var _user$project$View$UpdateOrSave = {ctor: 'UpdateOrSave'};
-var _user$project$View$UpdateUser = function (a) {
-	return {ctor: 'UpdateUser', _0: a};
-};
-var _user$project$View$InsertAge = function (a) {
-	return {ctor: 'InsertAge', _0: a};
-};
-var _user$project$View$InsertName = function (a) {
-	return {ctor: 'InsertName', _0: a};
 };
 var _user$project$View$mainView = function (model) {
 	var deletedUsers = _elm_lang$core$List$length(
@@ -180,7 +164,7 @@ var _user$project$View$mainView = function (model) {
 								_0: _elm_lang$html$Html_Attributes$type_('text'),
 								_1: {
 									ctor: '::',
-									_0: _elm_lang$html$Html_Events$onInput(_user$project$View$InsertName),
+									_0: _elm_lang$html$Html_Events$onInput(_user$project$Update$InsertName),
 									_1: {
 										ctor: '::',
 										_0: _elm_lang$html$Html_Attributes$placeholder('Name'),
@@ -202,7 +186,7 @@ var _user$project$View$mainView = function (model) {
 									_0: _elm_lang$html$Html_Attributes$type_('text'),
 									_1: {
 										ctor: '::',
-										_0: _elm_lang$html$Html_Events$onInput(_user$project$View$InsertAge),
+										_0: _elm_lang$html$Html_Events$onInput(_user$project$Update$InsertAge),
 										_1: {
 											ctor: '::',
 											_0: _elm_lang$html$Html_Attributes$placeholder('Age'),
@@ -224,7 +208,7 @@ var _user$project$View$mainView = function (model) {
 										_0: _elm_lang$html$Html_Attributes$type_('button'),
 										_1: {
 											ctor: '::',
-											_0: _elm_lang$html$Html_Events$onClick(_user$project$View$UpdateOrSave),
+											_0: _elm_lang$html$Html_Events$onClick(_user$project$Update$UpdateOrSave),
 											_1: {
 												ctor: '::',
 												_0: _elm_lang$html$Html_Attributes$value(model.button),

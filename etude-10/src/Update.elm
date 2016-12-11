@@ -1,9 +1,17 @@
-module Widgets.UserAdministration.Update exposing (..)
+module Update exposing (..)
 
-import Widgets.UserAdministration.Model exposing (..)
-import Widgets.UserAdministration.View exposing (..)
+import Model exposing (..)
 import Helpers.General as Utils
 import Random
+
+
+type Msg
+    = InsertName String
+    | InsertAge String
+    | UpdateOrSave
+    | SaveUser Int
+    | DeleteUser Int
+    | EditUser User
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
