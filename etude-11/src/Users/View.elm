@@ -1,10 +1,10 @@
-module View exposing (..)
+module Users.View exposing (..)
 
 import Html exposing (Html, text, h1, div, img, input, form, ul, li, i, hr, br)
 import Html.Attributes exposing (..)
 import Html.Events exposing (..)
-import Model exposing (..)
-import Update exposing (..)
+import Users.Model exposing (..)
+import Users.Update exposing (..)
 
 
 userListView : Model -> Html Msg

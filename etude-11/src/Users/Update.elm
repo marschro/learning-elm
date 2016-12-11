@@ -1,6 +1,6 @@
-module Update exposing (..)
+module Users.Update exposing (..)
 
-import Model exposing (..)
+import Users.Model exposing (..)
 import Helpers.General as Utils
 import Random
 
