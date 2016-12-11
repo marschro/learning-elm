@@ -46,7 +46,8 @@ mainView model =
             List.length <|
                 List.filter (\user -> user.deleted == True) model.users
     in
-        div [ class "wrapper" ]
+        div
+            [ class "wrapper" ]
             [ h1 [] [ text ("We have " ++ toString (List.length model.users) ++ " (deleted: " ++ toString deletedUsers ++ ")") ]
             , Html.form []
                 [ input [ type_ "text", onInput InsertName, placeholder "Name", value model.name ] []
