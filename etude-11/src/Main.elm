@@ -16,14 +16,18 @@ import Members.Update exposing (..)
 
 type alias Model =
     { page : Page
-    , users : ( Users.Model.Model, Cmd Msg )
-    , members : ( Members.Model.Model, Cmd Msg )
+    , users : Users.Model.Model
     }
 
 
 type Page
-    = UsersPage
-    | MembersPage
+    = NotFound
+    | UsersPage
+
+
+init : ( Model, Cmd Msg )
+init =
+    ( initModel, Cmd.none )
 
 
 initModel : Model
@@ -39,25 +43,24 @@ initModel =
 
 
 type Msg
-    = ChangePage Page
+    = Navigate Page
     | UsersMsg Users.Update.Msg
     | MembersMsg Members.Update.Msg
 
 
-update : Msg -> Model -> Model
+update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        ChangePage page ->
-            { model | page = page }
-
-        UsersMsg msg ->
-            { model | members = ( Users.Update.update msg model.users, Cmd.none ) }
-
-        MembersMsg msg ->
-            { model | members = ( Members.Update.update msg model.members, Cmd.none ) }
+        Navigate page ->
+            ( { model | page = page }, Cmd.none )
 
 
 
+-- UsersMsg msg ->
+--     { model | members = ( Users.Update.update msg model.users, Cmd.none ) }
+--
+-- MembersMsg msg ->
+--     { model | members = ( Members.Update.update msg model.members, Cmd.none ) }
 -- View
 
 
@@ -68,7 +71,7 @@ view model =
             case model.page of
                 UsersPage ->
                     Html.map UsersMsg
-                        (Users.View.mainView model.usersModel)
+                        (Users.View.mainView model.users)
 
                 MembersPage ->
                     Html.map MembersMsg
@@ -76,12 +79,11 @@ view model =
     in
         div []
             [ div []
-                [ a [ href "#", onClick ChangePage (UsersPage) ] [ text "Users" ]
+                [ a [ href "#", onClick (Navigate UsersPage) ] [ text "Users" ]
                 , span [] [ text " | " ]
-                , a [ href "#", onClick ChangePage (MembersPage) ] [ text "Members" ]
+                , a [ href "#", onClick (Navigate MembersPage) ] [ text "Members" ]
                 ]
             , hr [] []
-            , page
             ]
 
 
@@ -100,9 +102,9 @@ view model =
 main : Program Never Model Msg
 main =
     Html.program
-        { init = initModel
-        , view = view
+        { init = init
         , update = update
+        , view = view
         , subscriptions = subscriptions
         }
 
