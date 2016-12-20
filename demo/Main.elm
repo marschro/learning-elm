@@ -1,6 +1,8 @@
 module Main exposing (..)
 
-import Html exposing (Html, div)
+import Html exposing (Html, div, h1, text, hr, input, ul, li)
+import Html.Attributes exposing (..)
+import Html.Events exposing (..)
 
 
 -- MAIN
@@ -21,21 +23,31 @@ main =
 
 
 type alias Model =
-    {}
+    { headline : String
+    , input : String
+    , animals : List Animal
+    }
 
 
-type alias Msg =
-    {}
+type alias Animal =
+    { name : String
+    , color : String
+    }
 
 
-model : Model
-model =
-    {}
+type Msg
+    = UpdateInput String
+    | Add
+
+
+initModel : Model
+initModel =
+    { headline = "My animals", input = "", animals = [] }
 
 
 init : ( Model, Cmd Msg )
 init =
-    ( model, Cmd.none )
+    ( initModel, Cmd.none )
 
 
 
@@ -44,7 +56,28 @@ init =
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    ( model, Cmd.none )
+    case msg of
+        UpdateInput value ->
+            ( { model | input = value }, Cmd.none )
+
+        Add ->
+            if String.isEmpty model.input then
+                ( model, Cmd.none )
+            else
+                let
+                    animal =
+                        Animal model.input "black and white"
+
+                    newAnimals =
+                        animal :: model.animals
+                in
+                    ( { model
+                        | animals = newAnimals
+                        , input = ""
+                        , headline = "My " ++ toString (List.length model.animals) ++ " animals"
+                      }
+                    , Cmd.none
+                    )
 
 
 
@@ -62,4 +95,21 @@ subscriptions model =
 
 view : Model -> Html Msg
 view model =
-    div [] []
+    div []
+        [ h1 [] [ text model.headline ]
+        , input [ type_ "text", onInput UpdateInput, value model.input ] []
+        , input [ type_ "submit", onClick Add ] []
+        , listOfAnimals model
+        , hr [] []
+        , div [] [ text (toString model) ]
+        ]
+
+
+listOfAnimals : Model -> Html Msg
+listOfAnimals model =
+    model.animals |> List.sortBy .name |> List.map animal |> ul []
+
+
+animal : Animal -> Html Msg
+animal animal =
+    li [] [ text animal.name ]
