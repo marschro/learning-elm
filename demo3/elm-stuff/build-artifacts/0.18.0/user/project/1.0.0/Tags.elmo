@@ -1,0 +1,119 @@
+var _user$project$Tags$subscriptions = function (model) {
+	return _elm_lang$core$Platform_Sub$none;
+};
+var _user$project$Tags$initModel = {
+	tag: '',
+	tags: {ctor: '[]'}
+};
+var _user$project$Tags$init = {ctor: '_Tuple2', _0: _user$project$Tags$initModel, _1: _elm_lang$core$Platform_Cmd$none};
+var _user$project$Tags$Model = F2(
+	function (a, b) {
+		return {tag: a, tags: b};
+	});
+var _user$project$Tags$Tag = function (a) {
+	return {name: a};
+};
+var _user$project$Tags$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		if (_p0.ctor === 'Add') {
+			if (_elm_lang$core$String$isEmpty(model.tag)) {
+				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+			} else {
+				var newTag = _user$project$Tags$Tag(model.tag);
+				var newTags = {ctor: '::', _0: newTag, _1: model.tags};
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{tag: '', tags: newTags}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			}
+		} else {
+			return {
+				ctor: '_Tuple2',
+				_0: _elm_lang$core$Native_Utils.update(
+					model,
+					{tag: _p0._0}),
+				_1: _elm_lang$core$Platform_Cmd$none
+			};
+		}
+	});
+var _user$project$Tags$Update = function (a) {
+	return {ctor: 'Update', _0: a};
+};
+var _user$project$Tags$Add = {ctor: 'Add'};
+var _user$project$Tags$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$h2,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('Tags'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$input,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$type_('text'),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$placeholder('enter tag name'),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Events$onInput(_user$project$Tags$Update),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$value(model.tag),
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					},
+					{ctor: '[]'}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$input,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$type_('submit'),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$value('Add Tag'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Events$onClick(_user$project$Tags$Add),
+									_1: {ctor: '[]'}
+								}
+							}
+						},
+						{ctor: '[]'}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$p,
+							{ctor: '[]'},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text(
+									_elm_lang$core$Basics$toString(model)),
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		});
+};
+var _user$project$Tags$main = _elm_lang$html$Html$program(
+	{init: _user$project$Tags$init, update: _user$project$Tags$update, view: _user$project$Tags$view, subscriptions: _user$project$Tags$subscriptions})();
