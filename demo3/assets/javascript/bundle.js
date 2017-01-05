@@ -8256,35 +8256,35 @@ var _elm_lang$html$Html_Events$Options = F2(
 		return {stopPropagation: a, preventDefault: b};
 	});
 
-var _user$project$Users$subscriptions = function (model) {
+var _user$project$Droids$subscriptions = function (model) {
 	return _elm_lang$core$Platform_Sub$none;
 };
-var _user$project$Users$initModel = {
-	name: '',
-	users: {ctor: '[]'}
+var _user$project$Droids$initModel = {
+	input: '',
+	droids: {ctor: '[]'}
 };
-var _user$project$Users$init = {ctor: '_Tuple2', _0: _user$project$Users$initModel, _1: _elm_lang$core$Platform_Cmd$none};
-var _user$project$Users$Model = F2(
+var _user$project$Droids$init = {ctor: '_Tuple2', _0: _user$project$Droids$initModel, _1: _elm_lang$core$Platform_Cmd$none};
+var _user$project$Droids$Model = F2(
 	function (a, b) {
-		return {name: a, users: b};
+		return {input: a, droids: b};
 	});
-var _user$project$Users$User = function (a) {
+var _user$project$Droids$Droid = function (a) {
 	return {name: a};
 };
-var _user$project$Users$update = F2(
+var _user$project$Droids$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
 		if (_p0.ctor === 'Add') {
-			if (_elm_lang$core$String$isEmpty(model.name)) {
+			if (_elm_lang$core$String$isEmpty(model.input)) {
 				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
 			} else {
-				var newUser = _user$project$Users$User(model.name);
-				var newUsers = {ctor: '::', _0: newUser, _1: model.users};
+				var newDroid = _user$project$Droids$Droid(model.input);
+				var newDroids = {ctor: '::', _0: newDroid, _1: model.droids};
 				return {
 					ctor: '_Tuple2',
 					_0: _elm_lang$core$Native_Utils.update(
 						model,
-						{name: '', users: newUsers}),
+						{input: '', droids: newDroids}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
 			}
@@ -8293,16 +8293,16 @@ var _user$project$Users$update = F2(
 				ctor: '_Tuple2',
 				_0: _elm_lang$core$Native_Utils.update(
 					model,
-					{name: _p0._0}),
+					{input: _p0._0}),
 				_1: _elm_lang$core$Platform_Cmd$none
 			};
 		}
 	});
-var _user$project$Users$Update = function (a) {
+var _user$project$Droids$Update = function (a) {
 	return {ctor: 'Update', _0: a};
 };
-var _user$project$Users$Add = {ctor: 'Add'};
-var _user$project$Users$view = function (model) {
+var _user$project$Droids$Add = {ctor: 'Add'};
+var _user$project$Droids$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -8317,7 +8317,7 @@ var _user$project$Users$view = function (model) {
 				{ctor: '[]'},
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html$text('Users'),
+					_0: _elm_lang$html$Html$text('Droids'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
@@ -8329,13 +8329,13 @@ var _user$project$Users$view = function (model) {
 						_0: _elm_lang$html$Html_Attributes$type_('text'),
 						_1: {
 							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$placeholder('enter username'),
+							_0: _elm_lang$html$Html_Attributes$placeholder('enter droid name'),
 							_1: {
 								ctor: '::',
-								_0: _elm_lang$html$Html_Events$onInput(_user$project$Users$Update),
+								_0: _elm_lang$html$Html_Events$onInput(_user$project$Droids$Update),
 								_1: {
 									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$value(model.name),
+									_0: _elm_lang$html$Html_Attributes$value(model.input),
 									_1: {ctor: '[]'}
 								}
 							}
@@ -8351,10 +8351,10 @@ var _user$project$Users$view = function (model) {
 							_0: _elm_lang$html$Html_Attributes$type_('submit'),
 							_1: {
 								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$value('Add User'),
+								_0: _elm_lang$html$Html_Attributes$value('Add Droid'),
 								_1: {
 									ctor: '::',
-									_0: _elm_lang$html$Html_Events$onClick(_user$project$Users$Add),
+									_0: _elm_lang$html$Html_Events$onClick(_user$project$Droids$Add),
 									_1: {ctor: '[]'}
 								}
 							}
@@ -8381,38 +8381,38 @@ var _user$project$Users$view = function (model) {
 			}
 		});
 };
-var _user$project$Users$main = _elm_lang$html$Html$program(
-	{init: _user$project$Users$init, update: _user$project$Users$update, view: _user$project$Users$view, subscriptions: _user$project$Users$subscriptions})();
+var _user$project$Droids$main = _elm_lang$html$Html$program(
+	{init: _user$project$Droids$init, update: _user$project$Droids$update, view: _user$project$Droids$view, subscriptions: _user$project$Droids$subscriptions})();
 
-var _user$project$Tags$subscriptions = function (model) {
+var _user$project$Jedis$subscriptions = function (model) {
 	return _elm_lang$core$Platform_Sub$none;
 };
-var _user$project$Tags$initModel = {
-	tag: '',
-	tags: {ctor: '[]'}
+var _user$project$Jedis$initModel = {
+	input: '',
+	jedis: {ctor: '[]'}
 };
-var _user$project$Tags$init = {ctor: '_Tuple2', _0: _user$project$Tags$initModel, _1: _elm_lang$core$Platform_Cmd$none};
-var _user$project$Tags$Model = F2(
+var _user$project$Jedis$init = {ctor: '_Tuple2', _0: _user$project$Jedis$initModel, _1: _elm_lang$core$Platform_Cmd$none};
+var _user$project$Jedis$Model = F2(
 	function (a, b) {
-		return {tag: a, tags: b};
+		return {input: a, jedis: b};
 	});
-var _user$project$Tags$Tag = function (a) {
+var _user$project$Jedis$Jedi = function (a) {
 	return {name: a};
 };
-var _user$project$Tags$update = F2(
+var _user$project$Jedis$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
 		if (_p0.ctor === 'Add') {
-			if (_elm_lang$core$String$isEmpty(model.tag)) {
+			if (_elm_lang$core$String$isEmpty(model.input)) {
 				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
 			} else {
-				var newTag = _user$project$Tags$Tag(model.tag);
-				var newTags = {ctor: '::', _0: newTag, _1: model.tags};
+				var newJedi = _user$project$Jedis$Jedi(model.input);
+				var newJedis = {ctor: '::', _0: newJedi, _1: model.jedis};
 				return {
 					ctor: '_Tuple2',
 					_0: _elm_lang$core$Native_Utils.update(
 						model,
-						{tag: '', tags: newTags}),
+						{input: '', jedis: newJedis}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
 			}
@@ -8421,16 +8421,16 @@ var _user$project$Tags$update = F2(
 				ctor: '_Tuple2',
 				_0: _elm_lang$core$Native_Utils.update(
 					model,
-					{tag: _p0._0}),
+					{input: _p0._0}),
 				_1: _elm_lang$core$Platform_Cmd$none
 			};
 		}
 	});
-var _user$project$Tags$Update = function (a) {
+var _user$project$Jedis$Update = function (a) {
 	return {ctor: 'Update', _0: a};
 };
-var _user$project$Tags$Add = {ctor: 'Add'};
-var _user$project$Tags$view = function (model) {
+var _user$project$Jedis$Add = {ctor: 'Add'};
+var _user$project$Jedis$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -8445,7 +8445,7 @@ var _user$project$Tags$view = function (model) {
 				{ctor: '[]'},
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html$text('Tags'),
+					_0: _elm_lang$html$Html$text('Jedi\'s'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
@@ -8457,13 +8457,13 @@ var _user$project$Tags$view = function (model) {
 						_0: _elm_lang$html$Html_Attributes$type_('text'),
 						_1: {
 							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$placeholder('enter tag name'),
+							_0: _elm_lang$html$Html_Attributes$placeholder('enter jedi name'),
 							_1: {
 								ctor: '::',
-								_0: _elm_lang$html$Html_Events$onInput(_user$project$Tags$Update),
+								_0: _elm_lang$html$Html_Events$onInput(_user$project$Jedis$Update),
 								_1: {
 									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$value(model.tag),
+									_0: _elm_lang$html$Html_Attributes$value(model.input),
 									_1: {ctor: '[]'}
 								}
 							}
@@ -8479,10 +8479,10 @@ var _user$project$Tags$view = function (model) {
 							_0: _elm_lang$html$Html_Attributes$type_('submit'),
 							_1: {
 								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$value('Add Tag'),
+								_0: _elm_lang$html$Html_Attributes$value('Add Jedi'),
 								_1: {
 									ctor: '::',
-									_0: _elm_lang$html$Html_Events$onClick(_user$project$Tags$Add),
+									_0: _elm_lang$html$Html_Events$onClick(_user$project$Jedis$Add),
 									_1: {ctor: '[]'}
 								}
 							}
@@ -8509,73 +8509,73 @@ var _user$project$Tags$view = function (model) {
 			}
 		});
 };
-var _user$project$Tags$main = _elm_lang$html$Html$program(
-	{init: _user$project$Tags$init, update: _user$project$Tags$update, view: _user$project$Tags$view, subscriptions: _user$project$Tags$subscriptions})();
+var _user$project$Jedis$main = _elm_lang$html$Html$program(
+	{init: _user$project$Jedis$init, update: _user$project$Jedis$update, view: _user$project$Jedis$view, subscriptions: _user$project$Jedis$subscriptions})();
 
 var _user$project$Main$subscriptions = function (model) {
 	return _elm_lang$core$Platform_Sub$none;
 };
 var _user$project$Main$stats = function (model) {
-	var tags = _elm_lang$core$Basics$toString(
-		_elm_lang$core$List$length(model.tags.tags));
-	var users = _elm_lang$core$Basics$toString(
-		_elm_lang$core$List$length(model.users.users));
+	var droids = _elm_lang$core$Basics$toString(
+		_elm_lang$core$List$length(model.droids.droids));
+	var jedis = _elm_lang$core$Basics$toString(
+		_elm_lang$core$List$length(model.jedis.jedis));
 	return A2(
 		_elm_lang$core$Basics_ops['++'],
-		'Users: ',
+		'Jedis: ',
 		A2(
 			_elm_lang$core$Basics_ops['++'],
-			users,
-			A2(_elm_lang$core$Basics_ops['++'], ' Tags: ', tags)));
+			jedis,
+			A2(_elm_lang$core$Basics_ops['++'], ', Droids: ', droids)));
 };
-var _user$project$Main$initModel = {users: _user$project$Users$initModel, tags: _user$project$Tags$initModel};
+var _user$project$Main$initModel = {jedis: _user$project$Jedis$initModel, droids: _user$project$Droids$initModel};
 var _user$project$Main$init = {ctor: '_Tuple2', _0: _user$project$Main$initModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$Main$Model = F2(
 	function (a, b) {
-		return {users: a, tags: b};
+		return {jedis: a, droids: b};
 	});
-var _user$project$Main$TagsMsg = function (a) {
-	return {ctor: 'TagsMsg', _0: a};
+var _user$project$Main$DroidsMsg = function (a) {
+	return {ctor: 'DroidsMsg', _0: a};
 };
-var _user$project$Main$UsersMsg = function (a) {
-	return {ctor: 'UsersMsg', _0: a};
+var _user$project$Main$JedisMsg = function (a) {
+	return {ctor: 'JedisMsg', _0: a};
 };
 var _user$project$Main$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
-		if (_p0.ctor === 'UsersMsg') {
-			var _p1 = A2(_user$project$Users$update, _p0._0, model.users);
+		if (_p0.ctor === 'JedisMsg') {
+			var _p1 = A2(_user$project$Jedis$update, _p0._0, model.jedis);
 			var updateModel = _p1._0;
 			var cmd = _p1._1;
 			return {
 				ctor: '_Tuple2',
 				_0: _elm_lang$core$Native_Utils.update(
 					model,
-					{users: updateModel}),
-				_1: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$UsersMsg, cmd)
+					{jedis: updateModel}),
+				_1: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$JedisMsg, cmd)
 			};
 		} else {
-			var _p2 = A2(_user$project$Tags$update, _p0._0, model.tags);
+			var _p2 = A2(_user$project$Droids$update, _p0._0, model.droids);
 			var updateModel = _p2._0;
 			var cmd = _p2._1;
 			return {
 				ctor: '_Tuple2',
 				_0: _elm_lang$core$Native_Utils.update(
 					model,
-					{tags: updateModel}),
-				_1: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$TagsMsg, cmd)
+					{droids: updateModel}),
+				_1: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$DroidsMsg, cmd)
 			};
 		}
 	});
 var _user$project$Main$view = function (model) {
-	var tagsView = A2(
+	var droidsView = A2(
 		_elm_lang$html$Html$map,
-		_user$project$Main$TagsMsg,
-		_user$project$Tags$view(model.tags));
-	var usersView = A2(
+		_user$project$Main$DroidsMsg,
+		_user$project$Droids$view(model.droids));
+	var jedisView = A2(
 		_elm_lang$html$Html$map,
-		_user$project$Main$UsersMsg,
-		_user$project$Users$view(model.users));
+		_user$project$Main$JedisMsg,
+		_user$project$Jedis$view(model.jedis));
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -8590,7 +8590,7 @@ var _user$project$Main$view = function (model) {
 				{ctor: '[]'},
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html$text('Dashboard '),
+					_0: _elm_lang$html$Html$text('My Star Wars Collection '),
 					_1: {
 						ctor: '::',
 						_0: A2(
@@ -8616,11 +8616,19 @@ var _user$project$Main$view = function (model) {
 					},
 					{
 						ctor: '::',
-						_0: usersView,
+						_0: jedisView,
 						_1: {
 							ctor: '::',
-							_0: tagsView,
-							_1: {ctor: '[]'}
+							_0: droidsView,
+							_1: {
+								ctor: '::',
+								_0: droidsView,
+								_1: {
+									ctor: '::',
+									_0: jedisView,
+									_1: {ctor: '[]'}
+								}
+							}
 						}
 					}),
 				_1: {

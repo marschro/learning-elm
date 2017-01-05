@@ -7,8 +7,8 @@ import Html.Attributes exposing (..)
 --import Html.Attributes exposing (..)
 --import Html.Events exposing (..)
 
-import Users exposing (..)
-import Tags exposing (..)
+import Jedis exposing (..)
+import Droids exposing (..)
 
 
 -- MAIN - The Program
@@ -38,15 +38,15 @@ init =
 
 
 type alias Model =
-    { users : Users.Model
-    , tags : Tags.Model
+    { jedis : Jedis.Model
+    , droids : Droids.Model
     }
 
 
 initModel : Model
 initModel =
-    { users = Users.initModel
-    , tags = Tags.initModel
+    { jedis = Jedis.initModel
+    , droids = Droids.initModel
     }
 
 
@@ -55,29 +55,29 @@ initModel =
 
 
 type Msg
-    = UsersMsg Users.Msg
-    | TagsMsg Tags.Msg
+    = JedisMsg Jedis.Msg
+    | DroidsMsg Droids.Msg
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
-        UsersMsg msg ->
+        JedisMsg msg ->
             let
                 ( updateModel, cmd ) =
-                    Users.update msg model.users
+                    Jedis.update msg model.jedis
             in
-                ( { model | users = updateModel }
-                , Cmd.map UsersMsg cmd
+                ( { model | jedis = updateModel }
+                , Cmd.map JedisMsg cmd
                 )
 
-        TagsMsg msg ->
+        DroidsMsg msg ->
             let
                 ( updateModel, cmd ) =
-                    Tags.update msg model.tags
+                    Droids.update msg model.droids
             in
-                ( { model | tags = updateModel }
-                , Cmd.map TagsMsg cmd
+                ( { model | droids = updateModel }
+                , Cmd.map DroidsMsg cmd
                 )
 
 
@@ -88,17 +88,19 @@ update msg model =
 view : Model -> Html Msg
 view model =
     let
-        usersView =
-            Html.map UsersMsg (Users.view model.users)
+        jedisView =
+            Html.map JedisMsg (Jedis.view model.jedis)
 
-        tagsView =
-            Html.map TagsMsg (Tags.view model.tags)
+        droidsView =
+            Html.map DroidsMsg (Droids.view model.droids)
     in
         div [ class "main" ]
-            [ h1 [] [ text "Dashboard ", span [] [ text (stats model) ] ]
+            [ h1 [] [ text "My Star Wars Collection ", span [] [ text (stats model) ] ]
             , div [ class "components" ]
-                [ usersView
-                , tagsView
+                [ jedisView
+                , droidsView
+                , droidsView
+                , jedisView
                 ]
             , div [ class "model" ] [ text (toString model) ]
             ]
@@ -107,13 +109,13 @@ view model =
 stats : Model -> String
 stats model =
     let
-        users =
-            toString (List.length model.users.users)
+        jedis =
+            toString (List.length model.jedis.jedis)
 
-        tags =
-            toString (List.length model.tags.tags)
+        droids =
+            toString (List.length model.droids.droids)
     in
-        "Users: " ++ users ++ " Tags: " ++ tags
+        "Jedis: " ++ jedis ++ ", Droids: " ++ droids
 
 
 

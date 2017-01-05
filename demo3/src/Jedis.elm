@@ -1,4 +1,4 @@
-module Users exposing (..)
+module Jedis exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -32,20 +32,20 @@ init =
 
 
 type alias Model =
-    { name : String
-    , users : List User
+    { input : String
+    , jedis : List Jedi
     }
 
 
-type alias User =
+type alias Jedi =
     { name : String
     }
 
 
 initModel : Model
 initModel =
-    { name = ""
-    , users = []
+    { input = ""
+    , jedis = []
     }
 
 
@@ -62,20 +62,20 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         Add ->
-            if String.isEmpty model.name then
+            if String.isEmpty model.input then
                 ( model, Cmd.none )
             else
                 let
-                    newUser =
-                        User model.name
+                    newJedi =
+                        Jedi model.input
 
-                    newUsers =
-                        newUser :: model.users
+                    newJedis =
+                        newJedi :: model.jedis
                 in
-                    ( { model | name = "", users = newUsers }, Cmd.none )
+                    ( { model | input = "", jedis = newJedis }, Cmd.none )
 
-        Update input ->
-            ( { model | name = input }, Cmd.none )
+        Update string ->
+            ( { model | input = string }, Cmd.none )
 
 
 
@@ -85,9 +85,9 @@ update msg model =
 view : Model -> Html Msg
 view model =
     div [ class "component" ]
-        [ h2 [] [ text "Users" ]
-        , input [ type_ "text", placeholder "enter username", onInput Update, value model.name ] []
-        , input [ type_ "submit", value "Add User", onClick Add ] []
+        [ h2 [] [ text "Jedi's" ]
+        , input [ type_ "text", placeholder "enter jedi name", onInput Update, value model.input ] []
+        , input [ type_ "submit", value "Add Jedi", onClick Add ] []
         , div [ class "model" ] [ text (toString model) ]
         ]
 

@@ -2,66 +2,66 @@ var _user$project$Main$subscriptions = function (model) {
 	return _elm_lang$core$Platform_Sub$none;
 };
 var _user$project$Main$stats = function (model) {
-	var tags = _elm_lang$core$Basics$toString(
-		_elm_lang$core$List$length(model.tags.tags));
-	var users = _elm_lang$core$Basics$toString(
-		_elm_lang$core$List$length(model.users.users));
+	var droids = _elm_lang$core$Basics$toString(
+		_elm_lang$core$List$length(model.droids.droids));
+	var jedis = _elm_lang$core$Basics$toString(
+		_elm_lang$core$List$length(model.jedis.jedis));
 	return A2(
 		_elm_lang$core$Basics_ops['++'],
-		'Users: ',
+		'Jedis: ',
 		A2(
 			_elm_lang$core$Basics_ops['++'],
-			users,
-			A2(_elm_lang$core$Basics_ops['++'], ' Tags: ', tags)));
+			jedis,
+			A2(_elm_lang$core$Basics_ops['++'], ', Droids: ', droids)));
 };
-var _user$project$Main$initModel = {users: _user$project$Users$initModel, tags: _user$project$Tags$initModel};
+var _user$project$Main$initModel = {jedis: _user$project$Jedis$initModel, droids: _user$project$Droids$initModel};
 var _user$project$Main$init = {ctor: '_Tuple2', _0: _user$project$Main$initModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$Main$Model = F2(
 	function (a, b) {
-		return {users: a, tags: b};
+		return {jedis: a, droids: b};
 	});
-var _user$project$Main$TagsMsg = function (a) {
-	return {ctor: 'TagsMsg', _0: a};
+var _user$project$Main$DroidsMsg = function (a) {
+	return {ctor: 'DroidsMsg', _0: a};
 };
-var _user$project$Main$UsersMsg = function (a) {
-	return {ctor: 'UsersMsg', _0: a};
+var _user$project$Main$JedisMsg = function (a) {
+	return {ctor: 'JedisMsg', _0: a};
 };
 var _user$project$Main$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
-		if (_p0.ctor === 'UsersMsg') {
-			var _p1 = A2(_user$project$Users$update, _p0._0, model.users);
+		if (_p0.ctor === 'JedisMsg') {
+			var _p1 = A2(_user$project$Jedis$update, _p0._0, model.jedis);
 			var updateModel = _p1._0;
 			var cmd = _p1._1;
 			return {
 				ctor: '_Tuple2',
 				_0: _elm_lang$core$Native_Utils.update(
 					model,
-					{users: updateModel}),
-				_1: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$UsersMsg, cmd)
+					{jedis: updateModel}),
+				_1: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$JedisMsg, cmd)
 			};
 		} else {
-			var _p2 = A2(_user$project$Tags$update, _p0._0, model.tags);
+			var _p2 = A2(_user$project$Droids$update, _p0._0, model.droids);
 			var updateModel = _p2._0;
 			var cmd = _p2._1;
 			return {
 				ctor: '_Tuple2',
 				_0: _elm_lang$core$Native_Utils.update(
 					model,
-					{tags: updateModel}),
-				_1: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$TagsMsg, cmd)
+					{droids: updateModel}),
+				_1: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$DroidsMsg, cmd)
 			};
 		}
 	});
 var _user$project$Main$view = function (model) {
-	var tagsView = A2(
+	var droidsView = A2(
 		_elm_lang$html$Html$map,
-		_user$project$Main$TagsMsg,
-		_user$project$Tags$view(model.tags));
-	var usersView = A2(
+		_user$project$Main$DroidsMsg,
+		_user$project$Droids$view(model.droids));
+	var jedisView = A2(
 		_elm_lang$html$Html$map,
-		_user$project$Main$UsersMsg,
-		_user$project$Users$view(model.users));
+		_user$project$Main$JedisMsg,
+		_user$project$Jedis$view(model.jedis));
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -76,7 +76,7 @@ var _user$project$Main$view = function (model) {
 				{ctor: '[]'},
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html$text('Dashboard '),
+					_0: _elm_lang$html$Html$text('My Star Wars Collection '),
 					_1: {
 						ctor: '::',
 						_0: A2(
@@ -102,11 +102,19 @@ var _user$project$Main$view = function (model) {
 					},
 					{
 						ctor: '::',
-						_0: usersView,
+						_0: jedisView,
 						_1: {
 							ctor: '::',
-							_0: tagsView,
-							_1: {ctor: '[]'}
+							_0: droidsView,
+							_1: {
+								ctor: '::',
+								_0: droidsView,
+								_1: {
+									ctor: '::',
+									_0: jedisView,
+									_1: {ctor: '[]'}
+								}
+							}
 						}
 					}),
 				_1: {
