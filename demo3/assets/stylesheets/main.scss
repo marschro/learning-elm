@@ -51,8 +51,13 @@ h1 {
     transition: all 0.2s ease-in-out;
 
     &:hover {
-        //background-color: $card-background-hover;
+        //box-shadow: 0 2px 20px darken($base-background-color, 40%);
+        //background-color: lighten(rgb(63, 126, 156), 50%);
+    }
+
+    &.has-focus {
         box-shadow: 0 2px 20px darken($base-background-color, 40%);
+        background-color: lighten(rgb(63, 126, 156), 50%);
     }
 }
 

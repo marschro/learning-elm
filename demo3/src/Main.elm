@@ -99,8 +99,6 @@ view model =
             , div [ class "components" ]
                 [ jedisView
                 , droidsView
-                , droidsView
-                , jedisView
                 ]
             , div [ class "model" ] [ text (toString model) ]
             ]

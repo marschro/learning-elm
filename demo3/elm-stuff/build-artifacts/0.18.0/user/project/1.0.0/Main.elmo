@@ -106,15 +106,7 @@ var _user$project$Main$view = function (model) {
 						_1: {
 							ctor: '::',
 							_0: droidsView,
-							_1: {
-								ctor: '::',
-								_0: droidsView,
-								_1: {
-									ctor: '::',
-									_0: jedisView,
-									_1: {ctor: '[]'}
-								}
-							}
+							_1: {ctor: '[]'}
 						}
 					}),
 				_1: {

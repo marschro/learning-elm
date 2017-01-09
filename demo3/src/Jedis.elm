@@ -33,6 +33,7 @@ init =
 
 type alias Model =
     { input : String
+    , hasFocus : Bool
     , jedis : List Jedi
     }
 
@@ -45,6 +46,7 @@ type alias Jedi =
 initModel : Model
 initModel =
     { input = ""
+    , hasFocus = False
     , jedis = []
     }
 
@@ -56,6 +58,8 @@ initModel =
 type Msg
     = Add
     | Update String
+    | SetFocus
+    | RemoveFocus
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -77,6 +81,12 @@ update msg model =
         Update string ->
             ( { model | input = string }, Cmd.none )
 
+        SetFocus ->
+            ( { model | hasFocus = True }, Cmd.none )
+
+        RemoveFocus ->
+            ( { model | hasFocus = False }, Cmd.none )
+
 
 
 -- VIEW - Without, you wont see anything...
@@ -84,12 +94,27 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-    div [ class "component" ]
-        [ h2 [] [ text "Jedi's" ]
-        , input [ type_ "text", placeholder "enter jedi name", onInput Update, value model.input ] []
-        , input [ type_ "submit", value "Add Jedi", onClick Add ] []
-        , div [ class "model" ] [ text (toString model) ]
-        ]
+    let
+        focus =
+            if model.hasFocus then
+                " has-focus"
+            else
+                ""
+    in
+        div [ class ("component" ++ focus) ]
+            [ h2 [] [ text "Jedi's" ]
+            , input
+                [ type_ "text"
+                , placeholder "enter jedi name"
+                , onInput Update
+                , value model.input
+                , onFocus SetFocus
+                , onBlur RemoveFocus
+                ]
+                []
+            , input [ type_ "submit", value "Add Jedi", onClick Add ] []
+            , div [ class "model" ] [ text (toString model) ]
+            ]
 
 
 

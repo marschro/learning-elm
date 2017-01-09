@@ -8261,12 +8261,13 @@ var _user$project$Droids$subscriptions = function (model) {
 };
 var _user$project$Droids$initModel = {
 	input: '',
+	hasFocus: false,
 	droids: {ctor: '[]'}
 };
 var _user$project$Droids$init = {ctor: '_Tuple2', _0: _user$project$Droids$initModel, _1: _elm_lang$core$Platform_Cmd$none};
-var _user$project$Droids$Model = F2(
-	function (a, b) {
-		return {input: a, droids: b};
+var _user$project$Droids$Model = F3(
+	function (a, b, c) {
+		return {input: a, hasFocus: b, droids: c};
 	});
 var _user$project$Droids$Droid = function (a) {
 	return {name: a};
@@ -8274,40 +8275,61 @@ var _user$project$Droids$Droid = function (a) {
 var _user$project$Droids$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
-		if (_p0.ctor === 'Add') {
-			if (_elm_lang$core$String$isEmpty(model.input)) {
-				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
-			} else {
-				var newDroid = _user$project$Droids$Droid(model.input);
-				var newDroids = {ctor: '::', _0: newDroid, _1: model.droids};
+		switch (_p0.ctor) {
+			case 'Add':
+				if (_elm_lang$core$String$isEmpty(model.input)) {
+					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+				} else {
+					var newDroid = _user$project$Droids$Droid(model.input);
+					var newDroids = {ctor: '::', _0: newDroid, _1: model.droids};
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{input: '', droids: newDroids}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				}
+			case 'Update':
 				return {
 					ctor: '_Tuple2',
 					_0: _elm_lang$core$Native_Utils.update(
 						model,
-						{input: '', droids: newDroids}),
+						{input: _p0._0}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
-			}
-		} else {
-			return {
-				ctor: '_Tuple2',
-				_0: _elm_lang$core$Native_Utils.update(
-					model,
-					{input: _p0._0}),
-				_1: _elm_lang$core$Platform_Cmd$none
-			};
+			case 'SetFocus':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{hasFocus: true}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			default:
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{hasFocus: false}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
 		}
 	});
+var _user$project$Droids$RemoveFocus = {ctor: 'RemoveFocus'};
+var _user$project$Droids$SetFocus = {ctor: 'SetFocus'};
 var _user$project$Droids$Update = function (a) {
 	return {ctor: 'Update', _0: a};
 };
 var _user$project$Droids$Add = {ctor: 'Add'};
 var _user$project$Droids$view = function (model) {
+	var focus = model.hasFocus ? ' has-focus' : '';
 	return A2(
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('component'),
+			_0: _elm_lang$html$Html_Attributes$class(
+				A2(_elm_lang$core$Basics_ops['++'], 'component', focus)),
 			_1: {ctor: '[]'}
 		},
 		{
@@ -8329,14 +8351,22 @@ var _user$project$Droids$view = function (model) {
 						_0: _elm_lang$html$Html_Attributes$type_('text'),
 						_1: {
 							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$placeholder('enter droid name'),
+							_0: _elm_lang$html$Html_Attributes$placeholder('enter jedi name'),
 							_1: {
 								ctor: '::',
 								_0: _elm_lang$html$Html_Events$onInput(_user$project$Droids$Update),
 								_1: {
 									ctor: '::',
 									_0: _elm_lang$html$Html_Attributes$value(model.input),
-									_1: {ctor: '[]'}
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Events$onFocus(_user$project$Droids$SetFocus),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html_Events$onBlur(_user$project$Droids$RemoveFocus),
+											_1: {ctor: '[]'}
+										}
+									}
 								}
 							}
 						}
@@ -8389,12 +8419,13 @@ var _user$project$Jedis$subscriptions = function (model) {
 };
 var _user$project$Jedis$initModel = {
 	input: '',
+	hasFocus: false,
 	jedis: {ctor: '[]'}
 };
 var _user$project$Jedis$init = {ctor: '_Tuple2', _0: _user$project$Jedis$initModel, _1: _elm_lang$core$Platform_Cmd$none};
-var _user$project$Jedis$Model = F2(
-	function (a, b) {
-		return {input: a, jedis: b};
+var _user$project$Jedis$Model = F3(
+	function (a, b, c) {
+		return {input: a, hasFocus: b, jedis: c};
 	});
 var _user$project$Jedis$Jedi = function (a) {
 	return {name: a};
@@ -8402,40 +8433,61 @@ var _user$project$Jedis$Jedi = function (a) {
 var _user$project$Jedis$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
-		if (_p0.ctor === 'Add') {
-			if (_elm_lang$core$String$isEmpty(model.input)) {
-				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
-			} else {
-				var newJedi = _user$project$Jedis$Jedi(model.input);
-				var newJedis = {ctor: '::', _0: newJedi, _1: model.jedis};
+		switch (_p0.ctor) {
+			case 'Add':
+				if (_elm_lang$core$String$isEmpty(model.input)) {
+					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+				} else {
+					var newJedi = _user$project$Jedis$Jedi(model.input);
+					var newJedis = {ctor: '::', _0: newJedi, _1: model.jedis};
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{input: '', jedis: newJedis}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
+				}
+			case 'Update':
 				return {
 					ctor: '_Tuple2',
 					_0: _elm_lang$core$Native_Utils.update(
 						model,
-						{input: '', jedis: newJedis}),
+						{input: _p0._0}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
-			}
-		} else {
-			return {
-				ctor: '_Tuple2',
-				_0: _elm_lang$core$Native_Utils.update(
-					model,
-					{input: _p0._0}),
-				_1: _elm_lang$core$Platform_Cmd$none
-			};
+			case 'SetFocus':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{hasFocus: true}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			default:
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{hasFocus: false}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
 		}
 	});
+var _user$project$Jedis$RemoveFocus = {ctor: 'RemoveFocus'};
+var _user$project$Jedis$SetFocus = {ctor: 'SetFocus'};
 var _user$project$Jedis$Update = function (a) {
 	return {ctor: 'Update', _0: a};
 };
 var _user$project$Jedis$Add = {ctor: 'Add'};
 var _user$project$Jedis$view = function (model) {
+	var focus = model.hasFocus ? ' has-focus' : '';
 	return A2(
 		_elm_lang$html$Html$div,
 		{
 			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class('component'),
+			_0: _elm_lang$html$Html_Attributes$class(
+				A2(_elm_lang$core$Basics_ops['++'], 'component', focus)),
 			_1: {ctor: '[]'}
 		},
 		{
@@ -8464,7 +8516,15 @@ var _user$project$Jedis$view = function (model) {
 								_1: {
 									ctor: '::',
 									_0: _elm_lang$html$Html_Attributes$value(model.input),
-									_1: {ctor: '[]'}
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Events$onFocus(_user$project$Jedis$SetFocus),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html_Events$onBlur(_user$project$Jedis$RemoveFocus),
+											_1: {ctor: '[]'}
+										}
+									}
 								}
 							}
 						}
@@ -8620,15 +8680,7 @@ var _user$project$Main$view = function (model) {
 						_1: {
 							ctor: '::',
 							_0: droidsView,
-							_1: {
-								ctor: '::',
-								_0: droidsView,
-								_1: {
-									ctor: '::',
-									_0: jedisView,
-									_1: {ctor: '[]'}
-								}
-							}
+							_1: {ctor: '[]'}
 						}
 					}),
 				_1: {
