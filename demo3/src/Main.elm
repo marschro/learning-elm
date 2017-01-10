@@ -2,12 +2,6 @@ module Main exposing (..)
 
 import Html exposing (..)
 import Html.Attributes exposing (..)
-
-
---import Debug
---import Html.Attributes exposing (..)
---import Html.Events exposing (..)
-
 import Jedis exposing (..)
 import Droids exposing (..)
 
