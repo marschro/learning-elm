@@ -12415,6 +12415,42 @@ var _elm_lang$html$Html_Events$Options = F2(
 var _user$project$Droids$subscriptions = function (model) {
 	return _elm_lang$core$Platform_Sub$none;
 };
+var _user$project$Droids$droidView = function (droid) {
+	return A2(
+		_elm_lang$html$Html$li,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$span,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text(droid.name),
+					_1: {ctor: '[]'}
+				}),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$Droids$droidsListView = function (model) {
+	return (_elm_lang$core$Native_Utils.cmp(
+		_elm_lang$core$List$length(model.droids),
+		0) > 0) ? A2(
+		_elm_lang$html$Html$ul,
+		{ctor: '[]'},
+		A2(
+			_elm_lang$core$List$map,
+			_user$project$Droids$droidView,
+			A2(
+				_elm_lang$core$List$sortBy,
+				function (_) {
+					return _.name;
+				},
+				model.droids))) : A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{ctor: '[]'});
+};
 var _user$project$Droids$initModel = {
 	input: '',
 	hasFocus: false,
@@ -12548,20 +12584,24 @@ var _user$project$Droids$view = function (model) {
 						{ctor: '[]'}),
 					_1: {
 						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$div,
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class('model'),
-								_1: {ctor: '[]'}
-							},
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html$text(
-									_elm_lang$core$Basics$toString(model)),
-								_1: {ctor: '[]'}
-							}),
-						_1: {ctor: '[]'}
+						_0: _user$project$Droids$droidsListView(model),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$class('model'),
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text(
+										_elm_lang$core$Basics$toString(model)),
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						}
 					}
 				}
 			}

@@ -59,6 +59,19 @@ h1 {
         box-shadow: 0 2px 20px darken($base-background-color, 40%);
         background-color: lighten(rgb(63, 126, 156), 50%);
     }
+
+    ul {
+        padding: 1em 0em;
+        li {
+            display: block;
+            padding: 0.25em 1em;
+            background-color: #333333;
+            border-radius: 4px;
+            color: #FFF;
+            margin-bottom:0.25em;
+        }
+    }
+
 }
 
 // Model

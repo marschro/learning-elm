@@ -113,8 +113,23 @@ view model =
                 ]
                 []
             , input [ type_ "submit", value "Add Droid", onClick Add ] []
+            , droidsListView model
             , div [ class "model" ] [ text (toString model) ]
             ]
+
+
+droidsListView : Model -> Html Msg
+droidsListView model =
+    if List.length model.droids > 0 then
+        model.droids |> List.sortBy .name |> List.map droidView |> ul []
+    else
+        div [] []
+
+
+droidView : Droid -> Html Msg
+droidView droid =
+    li []
+        [ span [] [ text droid.name ] ]
 
 
 
