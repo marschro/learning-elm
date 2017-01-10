@@ -113,8 +113,20 @@ view model =
                 ]
                 []
             , input [ type_ "submit", value "Add Jedi", onClick Add ] []
+            , jedisListView model
             , div [ class "model" ] [ text (toString model) ]
             ]
+
+
+jedisListView : Model -> Html Msg
+jedisListView model =
+    model.jedis |> List.sortBy .name |> List.map jediView |> ul []
+
+
+jediView : Jedi -> Html Msg
+jediView jedi =
+    li []
+        [ span [] [ text jedi.name ] ]
 
 
 

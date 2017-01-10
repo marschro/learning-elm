@@ -8,7 +8,7 @@ const gutil     = require('gulp-util')
 const clear     = require('clear')
 const port      = 4000
 
-let cmd = 'elm make ./src/Main.elm --output ./assets/javascript/bundle.js'
+let cmd = 'elm make ./src/Main.elm --debug --output ./assets/javascript/bundle.js'
 let counter   = 0
 
 clear()

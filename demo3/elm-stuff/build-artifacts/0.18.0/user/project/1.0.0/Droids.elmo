@@ -93,7 +93,7 @@ var _user$project$Droids$view = function (model) {
 						_0: _elm_lang$html$Html_Attributes$type_('text'),
 						_1: {
 							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$placeholder('enter jedi name'),
+							_0: _elm_lang$html$Html_Attributes$placeholder('enter droid name'),
 							_1: {
 								ctor: '::',
 								_0: _elm_lang$html$Html_Events$onInput(_user$project$Droids$Update),

@@ -105,7 +105,7 @@ view model =
             [ h2 [] [ text "Droids" ]
             , input
                 [ type_ "text"
-                , placeholder "enter jedi name"
+                , placeholder "enter droid name"
                 , onInput Update
                 , value model.input
                 , onFocus SetFocus

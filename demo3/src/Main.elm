@@ -4,6 +4,7 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 
 
+--import Debug
 --import Html.Attributes exposing (..)
 --import Html.Events exposing (..)
 
@@ -64,10 +65,10 @@ update msg model =
     case msg of
         JedisMsg msg ->
             let
-                ( updateModel, cmd ) =
+                ( updateJedis, cmd ) =
                     Jedis.update msg model.jedis
             in
-                ( { model | jedis = updateModel }
+                ( { model | jedis = updateJedis }
                 , Cmd.map JedisMsg cmd
                 )
 
