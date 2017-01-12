@@ -12434,10 +12434,17 @@ var _user$project$Droids$update = F2(
 		var _p0 = msg;
 		switch (_p0.ctor) {
 			case 'Add':
-				if (_elm_lang$core$String$isEmpty(model.input)) {
-					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+				var droid = _elm_lang$core$String$trim(model.input);
+				if (_elm_lang$core$String$isEmpty(droid)) {
+					return {
+						ctor: '_Tuple2',
+						_0: _elm_lang$core$Native_Utils.update(
+							model,
+							{input: ''}),
+						_1: _elm_lang$core$Platform_Cmd$none
+					};
 				} else {
-					var newDroid = A2(_user$project$Droids$Droid, model.input, false);
+					var newDroid = A2(_user$project$Droids$Droid, droid, false);
 					var newDroids = {ctor: '::', _0: newDroid, _1: model.droids};
 					return {
 						ctor: '_Tuple2',

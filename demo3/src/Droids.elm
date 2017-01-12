@@ -68,17 +68,21 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         Add ->
-            if String.isEmpty model.input then
-                ( model, Cmd.none )
-            else
-                let
-                    newDroid =
-                        Droid model.input False
+            let
+                droid =
+                    String.trim model.input
+            in
+                if String.isEmpty droid then
+                    ( { model | input = "" }, Cmd.none )
+                else
+                    let
+                        newDroid =
+                            Droid droid False
 
-                    newDroids =
-                        newDroid :: model.droids
-                in
-                    ( { model | input = "", droids = newDroids }, Cmd.none )
+                        newDroids =
+                            newDroid :: model.droids
+                    in
+                        ( { model | input = "", droids = newDroids }, Cmd.none )
 
         Update string ->
             ( { model | input = string }, Cmd.none )

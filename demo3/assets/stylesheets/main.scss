@@ -2,7 +2,6 @@
 @import "base/base";
 @import "neat/neat";
 
-// Variables
 
 body {
     background-color: #FFF;
@@ -67,7 +66,7 @@ h1 {
         padding: 1em 0em;
         li {
             display: block;
-            padding: 0.25em 0.25em 0.25em 1em;
+            padding: 0.4em 0.25em 0.4em 1em;
             background-color: #333333;
             border-radius: 4px;
             color: #FFF;
@@ -78,6 +77,10 @@ h1 {
                 float: right;
                 font-size: 60%;
                 background-color: rgb(175, 50, 46);
+
+                &:hover {
+                    background-color: lighten(rgb(175, 50, 46), 10%);
+                }
             }
         }
     }
