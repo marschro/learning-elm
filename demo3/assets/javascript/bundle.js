@@ -12415,42 +12415,6 @@ var _elm_lang$html$Html_Events$Options = F2(
 var _user$project$Droids$subscriptions = function (model) {
 	return _elm_lang$core$Platform_Sub$none;
 };
-var _user$project$Droids$droidView = function (droid) {
-	return A2(
-		_elm_lang$html$Html$li,
-		{ctor: '[]'},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$span,
-				{ctor: '[]'},
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html$text(droid.name),
-					_1: {ctor: '[]'}
-				}),
-			_1: {ctor: '[]'}
-		});
-};
-var _user$project$Droids$droidsListView = function (model) {
-	return (_elm_lang$core$Native_Utils.cmp(
-		_elm_lang$core$List$length(model.droids),
-		0) > 0) ? A2(
-		_elm_lang$html$Html$ul,
-		{ctor: '[]'},
-		A2(
-			_elm_lang$core$List$map,
-			_user$project$Droids$droidView,
-			A2(
-				_elm_lang$core$List$sortBy,
-				function (_) {
-					return _.name;
-				},
-				model.droids))) : A2(
-		_elm_lang$html$Html$div,
-		{ctor: '[]'},
-		{ctor: '[]'});
-};
 var _user$project$Droids$initModel = {
 	input: '',
 	hasFocus: false,
@@ -12461,9 +12425,10 @@ var _user$project$Droids$Model = F3(
 	function (a, b, c) {
 		return {input: a, hasFocus: b, droids: c};
 	});
-var _user$project$Droids$Droid = function (a) {
-	return {name: a};
-};
+var _user$project$Droids$Droid = F2(
+	function (a, b) {
+		return {name: a, deleted: b};
+	});
 var _user$project$Droids$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
@@ -12472,7 +12437,7 @@ var _user$project$Droids$update = F2(
 				if (_elm_lang$core$String$isEmpty(model.input)) {
 					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
 				} else {
-					var newDroid = _user$project$Droids$Droid(model.input);
+					var newDroid = A2(_user$project$Droids$Droid, model.input, false);
 					var newDroids = {ctor: '::', _0: newDroid, _1: model.droids};
 					return {
 						ctor: '_Tuple2',
@@ -12498,7 +12463,7 @@ var _user$project$Droids$update = F2(
 						{hasFocus: true}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
-			default:
+			case 'RemoveFocus':
 				return {
 					ctor: '_Tuple2',
 					_0: _elm_lang$core$Native_Utils.update(
@@ -12506,8 +12471,93 @@ var _user$project$Droids$update = F2(
 						{hasFocus: false}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
+			default:
+				var newDroidsList = A2(
+					_elm_lang$core$List$map,
+					function (droid) {
+						return _elm_lang$core$Native_Utils.eq(droid, _p0._0) ? _elm_lang$core$Native_Utils.update(
+							droid,
+							{deleted: true}) : droid;
+					},
+					model.droids);
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{droids: newDroidsList}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
 		}
 	});
+var _user$project$Droids$Delete = function (a) {
+	return {ctor: 'Delete', _0: a};
+};
+var _user$project$Droids$droidView = function (droid) {
+	return A2(
+		_elm_lang$html$Html$li,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$span,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text(droid.name),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$input,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$type_('button'),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$html$Html_Attributes$class('delete'),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$value('delete'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Events$onClick(
+										_user$project$Droids$Delete(droid)),
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					},
+					{ctor: '[]'}),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _user$project$Droids$droidsListView = function (model) {
+	var filteredDroidsList = A2(
+		_elm_lang$core$List$filter,
+		function (droid) {
+			return !_elm_lang$core$Native_Utils.eq(droid.deleted, true);
+		},
+		model.droids);
+	return (_elm_lang$core$Native_Utils.cmp(
+		_elm_lang$core$List$length(filteredDroidsList),
+		0) > 0) ? A2(
+		_elm_lang$html$Html$ul,
+		{ctor: '[]'},
+		A2(
+			_elm_lang$core$List$map,
+			_user$project$Droids$droidView,
+			A2(
+				_elm_lang$core$List$sortBy,
+				function (_) {
+					return _.name;
+				},
+				filteredDroidsList))) : A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{ctor: '[]'});
+};
 var _user$project$Droids$RemoveFocus = {ctor: 'RemoveFocus'};
 var _user$project$Droids$SetFocus = {ctor: 'SetFocus'};
 var _user$project$Droids$Update = function (a) {
@@ -12940,7 +12990,7 @@ var _user$project$Main$main = _elm_lang$html$Html$program(
 var Elm = {};
 Elm['Main'] = Elm['Main'] || {};
 if (typeof _user$project$Main$main !== 'undefined') {
-    _user$project$Main$main(Elm['Main'], 'Main', {"types":{"unions":{"Droids.Msg":{"args":[],"tags":{"Add":[],"RemoveFocus":[],"SetFocus":[],"Update":["String"]}},"Jedis.Msg":{"args":[],"tags":{"Add":[],"RemoveFocus":[],"SetFocus":[],"Update":["String"]}},"Main.Msg":{"args":[],"tags":{"JedisMsg":["Jedis.Msg"],"DroidsMsg":["Droids.Msg"]}}},"aliases":{},"message":"Main.Msg"},"versions":{"elm":"0.18.0"}});
+    _user$project$Main$main(Elm['Main'], 'Main', {"types":{"unions":{"Droids.Msg":{"args":[],"tags":{"Add":[],"RemoveFocus":[],"SetFocus":[],"Delete":["Droids.Droid"],"Update":["String"]}},"Jedis.Msg":{"args":[],"tags":{"Add":[],"RemoveFocus":[],"SetFocus":[],"Update":["String"]}},"Main.Msg":{"args":[],"tags":{"JedisMsg":["Jedis.Msg"],"DroidsMsg":["Droids.Msg"]}}},"aliases":{"Droids.Droid":{"args":[],"type":"{ name : String, deleted : Bool }"}},"message":"Main.Msg"},"versions":{"elm":"0.18.0"}});
 }
 
 if (typeof define === "function" && define['amd'])

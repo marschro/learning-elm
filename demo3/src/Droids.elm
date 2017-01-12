@@ -40,6 +40,7 @@ type alias Model =
 
 type alias Droid =
     { name : String
+    , deleted : Bool
     }
 
 
@@ -60,6 +61,7 @@ type Msg
     | Update String
     | SetFocus
     | RemoveFocus
+    | Delete Droid
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -71,7 +73,7 @@ update msg model =
             else
                 let
                     newDroid =
-                        Droid model.input
+                        Droid model.input False
 
                     newDroids =
                         newDroid :: model.droids
@@ -86,6 +88,20 @@ update msg model =
 
         RemoveFocus ->
             ( { model | hasFocus = False }, Cmd.none )
+
+        Delete droidToDelete ->
+            let
+                newDroidsList =
+                    List.map
+                        (\droid ->
+                            if droid == droidToDelete then
+                                { droid | deleted = True }
+                            else
+                                droid
+                        )
+                        model.droids
+            in
+                ( { model | droids = newDroidsList }, Cmd.none )
 
 
 
@@ -120,16 +136,22 @@ view model =
 
 droidsListView : Model -> Html Msg
 droidsListView model =
-    if List.length model.droids > 0 then
-        model.droids |> List.sortBy .name |> List.map droidView |> ul []
-    else
-        div [] []
+    let
+        filteredDroidsList =
+            List.filter (\droid -> droid.deleted /= True) model.droids
+    in
+        if List.length filteredDroidsList > 0 then
+            filteredDroidsList |> List.sortBy .name |> List.map droidView |> ul []
+        else
+            div [] []
 
 
 droidView : Droid -> Html Msg
 droidView droid =
     li []
-        [ span [] [ text droid.name ] ]
+        [ span [] [ text droid.name ]
+        , input [ type_ "button", class "delete", value "delete", onClick (Delete droid) ] []
+        ]
 
 
 

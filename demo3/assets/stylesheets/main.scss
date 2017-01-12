@@ -7,6 +7,9 @@
 body {
     background-color: #FFF;
 }
+textarea, input, button, select {
+    outline: none;
+}
 h1 {
     span {
         font-size: 60%;
@@ -64,11 +67,18 @@ h1 {
         padding: 1em 0em;
         li {
             display: block;
-            padding: 0.25em 1em;
+            padding: 0.25em 0.25em 0.25em 1em;
             background-color: #333333;
             border-radius: 4px;
             color: #FFF;
             margin-bottom:0.25em;
+
+            .delete {
+                position: relative;
+                float: right;
+                font-size: 60%;
+                background-color: rgb(175, 50, 46);
+            }
         }
     }
 
