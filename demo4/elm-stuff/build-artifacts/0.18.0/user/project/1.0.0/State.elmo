@@ -1,0 +1,52 @@
+var _user$project$State$initDroidsModel = {
+	input: '',
+	hasFocus: false,
+	droids: {ctor: '[]'},
+	ownerSelect: _elm_lang$core$Maybe$Nothing
+};
+var _user$project$State$initJediModel = {
+	input: '',
+	hasFocus: false,
+	jedis: {ctor: '[]'}
+};
+var _user$project$State$initModel = {jedis: _user$project$State$initJediModel, droids: _user$project$State$initDroidsModel};
+var _user$project$State$Model = F2(
+	function (a, b) {
+		return {jedis: a, droids: b};
+	});
+var _user$project$State$Jedi_Model = F3(
+	function (a, b, c) {
+		return {input: a, hasFocus: b, jedis: c};
+	});
+var _user$project$State$Jedi = function (a) {
+	return {name: a};
+};
+var _user$project$State$Droid_Model = F4(
+	function (a, b, c, d) {
+		return {input: a, hasFocus: b, droids: c, ownerSelect: d};
+	});
+var _user$project$State$Droid = F3(
+	function (a, b, c) {
+		return {name: a, deleted: b, owner: c};
+	});
+var _user$project$State$RemoveFocus_Jedi = {ctor: 'RemoveFocus_Jedi'};
+var _user$project$State$SetFocus_Jedi = {ctor: 'SetFocus_Jedi'};
+var _user$project$State$Update_Jedi = function (a) {
+	return {ctor: 'Update_Jedi', _0: a};
+};
+var _user$project$State$Add_Jedi = {ctor: 'Add_Jedi'};
+var _user$project$State$DroidsMsg = function (a) {
+	return {ctor: 'DroidsMsg', _0: a};
+};
+var _user$project$State$JedisMsg = function (a) {
+	return {ctor: 'JedisMsg', _0: a};
+};
+var _user$project$State$Delete_Droid = function (a) {
+	return {ctor: 'Delete_Droid', _0: a};
+};
+var _user$project$State$RemoveFocus_Droid = {ctor: 'RemoveFocus_Droid'};
+var _user$project$State$SetFocus_Droid = {ctor: 'SetFocus_Droid'};
+var _user$project$State$Update_Droid = function (a) {
+	return {ctor: 'Update_Droid', _0: a};
+};
+var _user$project$State$Add_Droid = {ctor: 'Add_Droid'};
