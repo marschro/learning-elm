@@ -12443,18 +12443,18 @@ var _user$project$State$Droid = F3(
 	function (a, b, c) {
 		return {name: a, deleted: b, owner: c};
 	});
-var _user$project$State$RemoveFocus_Jedi = {ctor: 'RemoveFocus_Jedi'};
-var _user$project$State$SetFocus_Jedi = {ctor: 'SetFocus_Jedi'};
-var _user$project$State$Update_Jedi = function (a) {
-	return {ctor: 'Update_Jedi', _0: a};
-};
-var _user$project$State$Add_Jedi = {ctor: 'Add_Jedi'};
 var _user$project$State$DroidsMsg = function (a) {
 	return {ctor: 'DroidsMsg', _0: a};
 };
 var _user$project$State$JedisMsg = function (a) {
 	return {ctor: 'JedisMsg', _0: a};
 };
+var _user$project$State$RemoveFocus_Jedi = {ctor: 'RemoveFocus_Jedi'};
+var _user$project$State$SetFocus_Jedi = {ctor: 'SetFocus_Jedi'};
+var _user$project$State$Update_Jedi = function (a) {
+	return {ctor: 'Update_Jedi', _0: a};
+};
+var _user$project$State$Add_Jedi = {ctor: 'Add_Jedi'};
 var _user$project$State$Delete_Droid = function (a) {
 	return {ctor: 'Delete_Droid', _0: a};
 };
@@ -12800,23 +12800,7 @@ var _user$project$Modules_Droids$view = function (model) {
 						_1: {
 							ctor: '::',
 							_0: _user$project$Modules_Droids$droidsListView(model),
-							_1: {
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$div,
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('model'),
-										_1: {ctor: '[]'}
-									},
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html$text(
-											_elm_lang$core$Basics$toString(model)),
-										_1: {ctor: '[]'}
-									}),
-								_1: {ctor: '[]'}
-							}
+							_1: {ctor: '[]'}
 						}
 					}
 				}

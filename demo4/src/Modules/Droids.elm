@@ -25,7 +25,6 @@ init =
 
 
 
--- MODEL - never run without the model, cause it is state
 -- UPDATE - What happens if the user makes things... ?
 
 
@@ -100,7 +99,7 @@ view model =
             , select [] [ option [ value "asd" ] [ text "asd" ] ]
             , input [ type_ "submit", value "Add Droid", onClick Add_Droid ] []
             , droidsListView model
-            , div [ class "model" ] [ text (toString model) ]
+              --, div [ class "model" ] [ text (toString model) ]
             ]
 
 

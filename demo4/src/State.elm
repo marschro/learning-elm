@@ -1,10 +1,28 @@
 module State exposing (..)
 
+-- Main Model
+
 
 type alias Model =
     { jedis : Jedi_Model
     , droids : Droid_Model
     }
+
+
+type Msg
+    = JedisMsg Jedi_Msg
+    | DroidsMsg Droid_Msg
+
+
+initModel : Model
+initModel =
+    { jedis = initJediModel
+    , droids = initDroidsModel
+    }
+
+
+
+-- Jedis
 
 
 type alias Jedi_Model =
@@ -34,6 +52,10 @@ initJediModel =
     }
 
 
+
+-- Droids
+
+
 type alias Droid_Model =
     { input : String
     , hasFocus : Bool
@@ -49,24 +71,12 @@ type alias Droid =
     }
 
 
-type Msg
-    = JedisMsg Jedi_Msg
-    | DroidsMsg Droid_Msg
-
-
 type Droid_Msg
     = Add_Droid
     | Update_Droid String
     | SetFocus_Droid
     | RemoveFocus_Droid
     | Delete_Droid Droid
-
-
-initModel : Model
-initModel =
-    { jedis = initJediModel
-    , droids = initDroidsModel
-    }
 
 
 initDroidsModel : Droid_Model
