@@ -1,8 +1,18 @@
 module Update exposing (..)
 
-import Modules.Jedis as Jedis exposing (..)
-import Modules.Droids as Droids exposing (..)
 import State exposing (..)
+
+
+-- INIT
+
+
+initModel : State.Model
+initModel =
+    { notifications = False
+    , autoplay = True
+    , location = False
+    }
+
 
 
 -- UPDATE - What happens if the user makes things... ?
@@ -11,20 +21,11 @@ import State exposing (..)
 update : State.Msg -> State.Model -> ( State.Model, Cmd State.Msg )
 update msg model =
     case msg of
-        JedisMsg msg ->
-            let
-                ( updateJedis, cmd ) =
-                    Jedis.update msg model.jedis
-            in
-                ( { model | jedis = updateJedis }
-                , Cmd.map JedisMsg cmd
-                )
+        ToggleNotifications ->
+            ( { model | notifications = not model.notifications }, Cmd.none )
 
-        DroidsMsg msg ->
-            let
-                ( updateModel, cmd ) =
-                    Droids.update msg model.droids
-            in
-                ( { model | droids = updateModel }
-                , Cmd.map DroidsMsg cmd
-                )
+        ToggleAutoplay ->
+            ( { model | notifications = not model.autoplay }, Cmd.none )
+
+        ToggleLocation ->
+            ( { model | notifications = not model.location }, Cmd.none )

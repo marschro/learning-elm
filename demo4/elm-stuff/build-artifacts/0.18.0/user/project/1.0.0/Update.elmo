@@ -1,27 +1,31 @@
 var _user$project$Update$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
-		if (_p0.ctor === 'JedisMsg') {
-			var _p1 = A2(_user$project$Modules_Jedis$update, _p0._0, model.jedis);
-			var updateJedis = _p1._0;
-			var cmd = _p1._1;
-			return {
-				ctor: '_Tuple2',
-				_0: _elm_lang$core$Native_Utils.update(
-					model,
-					{jedis: updateJedis}),
-				_1: A2(_elm_lang$core$Platform_Cmd$map, _user$project$State$JedisMsg, cmd)
-			};
-		} else {
-			var _p2 = A2(_user$project$Modules_Droids$update, _p0._0, model.droids);
-			var updateModel = _p2._0;
-			var cmd = _p2._1;
-			return {
-				ctor: '_Tuple2',
-				_0: _elm_lang$core$Native_Utils.update(
-					model,
-					{droids: updateModel}),
-				_1: A2(_elm_lang$core$Platform_Cmd$map, _user$project$State$DroidsMsg, cmd)
-			};
+		switch (_p0.ctor) {
+			case 'ToggleNotifications':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{notifications: !model.notifications}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'ToggleAutoplay':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{notifications: !model.autoplay}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			default:
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{notifications: !model.location}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
 		}
 	});
+var _user$project$Update$initModel = {notifications: false, autoplay: true, location: false};

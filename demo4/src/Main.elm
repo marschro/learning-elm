@@ -9,7 +9,7 @@ import View exposing (..)
 -- MAIN - The Program
 
 
-main : Program Never Model Msg
+main : Program Never State.Model State.Msg
 main =
     Html.program
         { init = init
@@ -25,13 +25,13 @@ main =
 
 init : ( State.Model, Cmd State.Msg )
 init =
-    ( State.initModel, Cmd.none )
+    ( Update.initModel, Cmd.none )
 
 
 
 -- SUBSCRIPTIONS - This is brainfuck... nothing for today
 
 
-subscriptions : Model -> Sub Msg
+subscriptions : State.Model -> Sub State.Msg
 subscriptions model =
     Sub.none
