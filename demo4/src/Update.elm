@@ -9,7 +9,7 @@ import State exposing (..)
 initModel : State.Model
 initModel =
     { notifications = False
-    , autoplay = True
+    , autoplay = False
     , location = False
     }
 

@@ -28,4 +28,4 @@ var _user$project$Update$update = F2(
 				};
 		}
 	});
-var _user$project$Update$initModel = {notifications: false, autoplay: true, location: false};
+var _user$project$Update$initModel = {notifications: false, autoplay: false, location: false};

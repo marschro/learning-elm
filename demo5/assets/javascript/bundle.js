@@ -12412,91 +12412,111 @@ var _elm_lang$html$Html_Events$Options = F2(
 		return {stopPropagation: a, preventDefault: b};
 	});
 
-var _user$project$State$Model = F3(
-	function (a, b, c) {
-		return {notifications: a, autoplay: b, location: c};
+var _user$project$State$Model = F2(
+	function (a, b) {
+		return {fontSize: a, content: b};
 	});
-var _user$project$State$ToggleLocation = {ctor: 'ToggleLocation'};
-var _user$project$State$ToggleAutoplay = {ctor: 'ToggleAutoplay'};
-var _user$project$State$ToggleNotifications = {ctor: 'ToggleNotifications'};
+var _user$project$State$Large = {ctor: 'Large'};
+var _user$project$State$Medium = {ctor: 'Medium'};
+var _user$project$State$Small = {ctor: 'Small'};
+var _user$project$State$SwitchTo = function (a) {
+	return {ctor: 'SwitchTo', _0: a};
+};
 
 var _user$project$Update$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
-		switch (_p0.ctor) {
-			case 'ToggleNotifications':
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{notifications: !model.notifications}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-			case 'ToggleAutoplay':
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{notifications: !model.autoplay}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-			default:
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{notifications: !model.location}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-		}
+		return {
+			ctor: '_Tuple2',
+			_0: _elm_lang$core$Native_Utils.update(
+				model,
+				{fontSize: _p0._0}),
+			_1: _elm_lang$core$Platform_Cmd$none
+		};
 	});
-var _user$project$Update$initModel = {notifications: false, autoplay: false, location: false};
+var _user$project$Update$initModel = {fontSize: _user$project$State$Small, content: 'asd'};
 
-var _user$project$View$checkbox = F3(
-	function (msg, name, bool) {
-		return A2(
-			_elm_lang$html$Html$label,
-			{ctor: '[]'},
-			{
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$input,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$type_('checkbox'),
-						_1: {
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$checked(bool),
-							_1: {
-								ctor: '::',
-								_0: _elm_lang$html$Html_Events$onClick(msg),
-								_1: {ctor: '[]'}
-							}
-						}
-					},
-					{ctor: '[]'}),
-				_1: {
-					ctor: '::',
-					_0: _elm_lang$html$Html$text(name),
-					_1: {ctor: '[]'}
-				}
-			});
-	});
-var _user$project$View$view = function (model) {
+var _user$project$View$radio = function (_p0) {
+	var _p1 = _p0;
 	return A2(
-		_elm_lang$html$Html$fieldset,
+		_elm_lang$html$Html$label,
 		{ctor: '[]'},
 		{
 			ctor: '::',
-			_0: A3(_user$project$View$checkbox, _user$project$State$ToggleNotifications, 'Email Notifications', model.notifications),
+			_0: A2(
+				_elm_lang$html$Html$input,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$type_('radio'),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html_Events$onClick(_p1._1),
+						_1: {ctor: '[]'}
+					}
+				},
+				{ctor: '[]'}),
 			_1: {
 				ctor: '::',
-				_0: A3(_user$project$View$checkbox, _user$project$State$ToggleAutoplay, 'Video Autoplay', model.autoplay),
-				_1: {
+				_0: _elm_lang$html$Html$text(_p1._0),
+				_1: {ctor: '[]'}
+			}
+		});
+};
+var _user$project$View$viewPicker = function (options) {
+	return A2(
+		_elm_lang$html$Html$fieldset,
+		{ctor: '[]'},
+		A2(_elm_lang$core$List$map, _user$project$View$radio, options));
+};
+var _user$project$View$view = function (model) {
+	var classname = _elm_lang$core$String$toLower(
+		_elm_lang$core$Basics$toString(model.fontSize));
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: _user$project$View$viewPicker(
+				{
 					ctor: '::',
-					_0: A3(_user$project$View$checkbox, _user$project$State$ToggleLocation, 'Use Location', model.location),
-					_1: {ctor: '[]'}
-				}
+					_0: {
+						ctor: '_Tuple2',
+						_0: 'Small',
+						_1: _user$project$State$SwitchTo(_user$project$State$Small)
+					},
+					_1: {
+						ctor: '::',
+						_0: {
+							ctor: '_Tuple2',
+							_0: 'Medium',
+							_1: _user$project$State$SwitchTo(_user$project$State$Medium)
+						},
+						_1: {
+							ctor: '::',
+							_0: {
+								ctor: '_Tuple2',
+								_0: 'Large',
+								_1: _user$project$State$SwitchTo(_user$project$State$Large)
+							},
+							_1: {ctor: '[]'}
+						}
+					}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$section,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$class(classname),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(model.content),
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
 			}
 		});
 };
@@ -12511,7 +12531,7 @@ var _user$project$Main$main = _elm_lang$html$Html$program(
 var Elm = {};
 Elm['Main'] = Elm['Main'] || {};
 if (typeof _user$project$Main$main !== 'undefined') {
-    _user$project$Main$main(Elm['Main'], 'Main', {"types":{"unions":{"State.Msg":{"args":[],"tags":{"ToggleNotifications":[],"ToggleLocation":[],"ToggleAutoplay":[]}}},"aliases":{},"message":"State.Msg"},"versions":{"elm":"0.18.0"}});
+    _user$project$Main$main(Elm['Main'], 'Main', {"types":{"unions":{"State.FontSize":{"args":[],"tags":{"Small":[],"Large":[],"Medium":[]}},"State.Msg":{"args":[],"tags":{"SwitchTo":["State.FontSize"]}}},"aliases":{},"message":"State.Msg"},"versions":{"elm":"0.18.0"}});
 }
 
 if (typeof define === "function" && define['amd'])

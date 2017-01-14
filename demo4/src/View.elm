@@ -9,15 +9,15 @@ import Html.Events exposing (..)
 view : Model -> Html Msg
 view model =
     fieldset []
-        [ checkbox ToggleNotifications "Email Notifications"
-        , checkbox ToggleAutoplay "Video Autoplay"
-        , checkbox ToggleLocation "Use Location"
+        [ checkbox ToggleNotifications "Email Notifications" model.notifications
+        , checkbox ToggleAutoplay "Video Autoplay" model.autoplay
+        , checkbox ToggleLocation "Use Location" model.location
         ]
 
 
-checkbox : msg -> String -> Html msg
-checkbox msg name =
+checkbox : msg -> String -> Bool -> Html msg
+checkbox msg name bool =
     label []
-        [ input [ type_ "checkbox", onClick msg ] []
+        [ input [ type_ "checkbox", checked bool, onClick msg ] []
         , text name
         ]
