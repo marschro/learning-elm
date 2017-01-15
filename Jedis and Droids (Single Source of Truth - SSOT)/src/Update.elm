@@ -45,7 +45,7 @@ update msg model =
             else
                 let
                     newDroid =
-                        Droid model.inputDroidName
+                        Droid model.inputDroidName False
 
                     newDroids =
                         newDroid :: model.droids
@@ -60,3 +60,17 @@ update msg model =
 
         Droid_RemoveFocus ->
             ( { model | droidHasFocus = False }, Cmd.none )
+
+        Droid_Delete droidToDelete ->
+            let
+                newDroidsList =
+                    List.map
+                        (\droid ->
+                            if droid == droidToDelete then
+                                { droid | deleted = True }
+                            else
+                                droid
+                        )
+                        model.droids
+            in
+                ( { model | droids = newDroidsList }, Cmd.none )
