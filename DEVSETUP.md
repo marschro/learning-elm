@@ -1,4 +1,7 @@
 # ELM - Development Environment Setup Steps
+**_based on the install setup from James Moore https://github.com/knowthen_**
+
+
 
 1. Install **node.js** along with **npm** https://nodejs.org/en/ (via website or homebrew)
 ```
@@ -39,25 +42,20 @@ mv ~/Downloads/elm-format /usr/local/bin/elm-format
 ```
 apm install elm-format
 ```
-9. Start Atom App
-    + Open Preferences => Packages
-    + Filter by elm
-    + Choose elm-format package
-    + Make sure veryify the `format on save` checkbox is checked in package settings
+Start Atom App. Open Preferences => Packages => Filter by elm => choose `elm-format` package. Verify the `format on save` checkbox is `checked` in package settings.
 
-
-10. Install **atom linter**
+9. Install **atom linter**
 ```
 apm install linter
 ```
-11. Install  **elm linter**
+10. Install  **elm linter**
 ```
 apm install linter-elm-make
 which elm-make
 ```
 Install `elm linter` via apm. Locate the path for `elm-make` by whiching.
 
-12. In Atom App open the `linter-elm-make` settings page and set the `elm-make executable path` setting to the path that was returned by `which elm-make`
+11. In Atom App open the `linter-elm-make` settings page and set the `elm-make executable path` setting to the path that was returned by `which elm-make`
 
 
 ## You are ready to rumble!
