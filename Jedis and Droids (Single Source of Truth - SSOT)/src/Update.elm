@@ -1,4 +1,4 @@
-module Update exposing (update, initModel)
+module Update exposing (..)
 
 import State as Msg exposing (Msg)
 import State as Model exposing (Model)
@@ -18,9 +18,11 @@ initModel =
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
+        Jedi ->
+            ( model, Cmd.none )
+
         -- Jedi_Add ->
         --     ( model, Cmd.none )
-        --
         -- Jedi_Update string ->
         --     ( model, Cmd.none )
         --
