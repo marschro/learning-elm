@@ -12297,633 +12297,47 @@ var _elm_lang$html$Html_Attributes$classList = function (list) {
 };
 var _elm_lang$html$Html_Attributes$style = _elm_lang$virtual_dom$VirtualDom$style;
 
-var _elm_lang$html$Html_Events$keyCode = A2(_elm_lang$core$Json_Decode$field, 'keyCode', _elm_lang$core$Json_Decode$int);
-var _elm_lang$html$Html_Events$targetChecked = A2(
-	_elm_lang$core$Json_Decode$at,
-	{
-		ctor: '::',
-		_0: 'target',
-		_1: {
-			ctor: '::',
-			_0: 'checked',
-			_1: {ctor: '[]'}
-		}
-	},
-	_elm_lang$core$Json_Decode$bool);
-var _elm_lang$html$Html_Events$targetValue = A2(
-	_elm_lang$core$Json_Decode$at,
-	{
-		ctor: '::',
-		_0: 'target',
-		_1: {
-			ctor: '::',
-			_0: 'value',
-			_1: {ctor: '[]'}
-		}
-	},
-	_elm_lang$core$Json_Decode$string);
-var _elm_lang$html$Html_Events$defaultOptions = _elm_lang$virtual_dom$VirtualDom$defaultOptions;
-var _elm_lang$html$Html_Events$onWithOptions = _elm_lang$virtual_dom$VirtualDom$onWithOptions;
-var _elm_lang$html$Html_Events$on = _elm_lang$virtual_dom$VirtualDom$on;
-var _elm_lang$html$Html_Events$onFocus = function (msg) {
-	return A2(
-		_elm_lang$html$Html_Events$on,
-		'focus',
-		_elm_lang$core$Json_Decode$succeed(msg));
-};
-var _elm_lang$html$Html_Events$onBlur = function (msg) {
-	return A2(
-		_elm_lang$html$Html_Events$on,
-		'blur',
-		_elm_lang$core$Json_Decode$succeed(msg));
-};
-var _elm_lang$html$Html_Events$onSubmitOptions = _elm_lang$core$Native_Utils.update(
-	_elm_lang$html$Html_Events$defaultOptions,
-	{preventDefault: true});
-var _elm_lang$html$Html_Events$onSubmit = function (msg) {
-	return A3(
-		_elm_lang$html$Html_Events$onWithOptions,
-		'submit',
-		_elm_lang$html$Html_Events$onSubmitOptions,
-		_elm_lang$core$Json_Decode$succeed(msg));
-};
-var _elm_lang$html$Html_Events$onCheck = function (tagger) {
-	return A2(
-		_elm_lang$html$Html_Events$on,
-		'change',
-		A2(_elm_lang$core$Json_Decode$map, tagger, _elm_lang$html$Html_Events$targetChecked));
-};
-var _elm_lang$html$Html_Events$onInput = function (tagger) {
-	return A2(
-		_elm_lang$html$Html_Events$on,
-		'input',
-		A2(_elm_lang$core$Json_Decode$map, tagger, _elm_lang$html$Html_Events$targetValue));
-};
-var _elm_lang$html$Html_Events$onMouseOut = function (msg) {
-	return A2(
-		_elm_lang$html$Html_Events$on,
-		'mouseout',
-		_elm_lang$core$Json_Decode$succeed(msg));
-};
-var _elm_lang$html$Html_Events$onMouseOver = function (msg) {
-	return A2(
-		_elm_lang$html$Html_Events$on,
-		'mouseover',
-		_elm_lang$core$Json_Decode$succeed(msg));
-};
-var _elm_lang$html$Html_Events$onMouseLeave = function (msg) {
-	return A2(
-		_elm_lang$html$Html_Events$on,
-		'mouseleave',
-		_elm_lang$core$Json_Decode$succeed(msg));
-};
-var _elm_lang$html$Html_Events$onMouseEnter = function (msg) {
-	return A2(
-		_elm_lang$html$Html_Events$on,
-		'mouseenter',
-		_elm_lang$core$Json_Decode$succeed(msg));
-};
-var _elm_lang$html$Html_Events$onMouseUp = function (msg) {
-	return A2(
-		_elm_lang$html$Html_Events$on,
-		'mouseup',
-		_elm_lang$core$Json_Decode$succeed(msg));
-};
-var _elm_lang$html$Html_Events$onMouseDown = function (msg) {
-	return A2(
-		_elm_lang$html$Html_Events$on,
-		'mousedown',
-		_elm_lang$core$Json_Decode$succeed(msg));
-};
-var _elm_lang$html$Html_Events$onDoubleClick = function (msg) {
-	return A2(
-		_elm_lang$html$Html_Events$on,
-		'dblclick',
-		_elm_lang$core$Json_Decode$succeed(msg));
-};
-var _elm_lang$html$Html_Events$onClick = function (msg) {
-	return A2(
-		_elm_lang$html$Html_Events$on,
-		'click',
-		_elm_lang$core$Json_Decode$succeed(msg));
-};
-var _elm_lang$html$Html_Events$Options = F2(
-	function (a, b) {
-		return {stopPropagation: a, preventDefault: b};
+var _user$project$State$Model = F6(
+	function (a, b, c, d, e, f) {
+		return {inputJediName: a, inputDroidName: b, jediHasFocus: c, droidHasFocus: d, jedis: e, droids: f};
 	});
-
-var _user$project$Droids$subscriptions = function (model) {
-	return _elm_lang$core$Platform_Sub$none;
-};
-var _user$project$Droids$initModel = {
-	input: '',
-	hasFocus: false,
-	droids: {ctor: '[]'}
-};
-var _user$project$Droids$init = {ctor: '_Tuple2', _0: _user$project$Droids$initModel, _1: _elm_lang$core$Platform_Cmd$none};
-var _user$project$Droids$Model = F3(
-	function (a, b, c) {
-		return {input: a, hasFocus: b, droids: c};
-	});
-var _user$project$Droids$Droid = F2(
-	function (a, b) {
-		return {name: a, deleted: b};
-	});
-var _user$project$Droids$update = F2(
-	function (msg, model) {
-		var _p0 = msg;
-		switch (_p0.ctor) {
-			case 'Add':
-				var droid = _elm_lang$core$String$trim(model.input);
-				if (_elm_lang$core$String$isEmpty(droid)) {
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{input: ''}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				} else {
-					var newDroid = A2(_user$project$Droids$Droid, droid, false);
-					var newDroids = {ctor: '::', _0: newDroid, _1: model.droids};
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{input: '', droids: newDroids}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				}
-			case 'Update':
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{input: _p0._0}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-			case 'SetFocus':
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{hasFocus: true}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-			case 'RemoveFocus':
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{hasFocus: false}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-			default:
-				var newDroidsList = A2(
-					_elm_lang$core$List$map,
-					function (droid) {
-						return _elm_lang$core$Native_Utils.eq(droid, _p0._0) ? _elm_lang$core$Native_Utils.update(
-							droid,
-							{deleted: true}) : droid;
-					},
-					model.droids);
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{droids: newDroidsList}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-		}
-	});
-var _user$project$Droids$Delete = function (a) {
-	return {ctor: 'Delete', _0: a};
-};
-var _user$project$Droids$droidView = function (droid) {
-	return A2(
-		_elm_lang$html$Html$li,
-		{ctor: '[]'},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$span,
-				{ctor: '[]'},
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html$text(droid.name),
-					_1: {ctor: '[]'}
-				}),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$input,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$type_('button'),
-						_1: {
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('delete'),
-							_1: {
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$value('delete'),
-								_1: {
-									ctor: '::',
-									_0: _elm_lang$html$Html_Events$onClick(
-										_user$project$Droids$Delete(droid)),
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					},
-					{ctor: '[]'}),
-				_1: {ctor: '[]'}
-			}
-		});
-};
-var _user$project$Droids$droidsListView = function (model) {
-	var filteredDroidsList = A2(
-		_elm_lang$core$List$filter,
-		function (droid) {
-			return !_elm_lang$core$Native_Utils.eq(droid.deleted, true);
-		},
-		model.droids);
-	return (_elm_lang$core$Native_Utils.cmp(
-		_elm_lang$core$List$length(filteredDroidsList),
-		0) > 0) ? A2(
-		_elm_lang$html$Html$ul,
-		{ctor: '[]'},
-		A2(
-			_elm_lang$core$List$map,
-			_user$project$Droids$droidView,
-			A2(
-				_elm_lang$core$List$sortBy,
-				function (_) {
-					return _.name;
-				},
-				filteredDroidsList))) : A2(
-		_elm_lang$html$Html$div,
-		{ctor: '[]'},
-		{ctor: '[]'});
-};
-var _user$project$Droids$RemoveFocus = {ctor: 'RemoveFocus'};
-var _user$project$Droids$SetFocus = {ctor: 'SetFocus'};
-var _user$project$Droids$Update = function (a) {
-	return {ctor: 'Update', _0: a};
-};
-var _user$project$Droids$Add = {ctor: 'Add'};
-var _user$project$Droids$view = function (model) {
-	var focus = model.hasFocus ? ' has-focus' : '';
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class(
-				A2(_elm_lang$core$Basics_ops['++'], 'component', focus)),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$h2,
-				{ctor: '[]'},
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html$text('Droids'),
-					_1: {ctor: '[]'}
-				}),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$input,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$type_('text'),
-						_1: {
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$placeholder('enter droid name'),
-							_1: {
-								ctor: '::',
-								_0: _elm_lang$html$Html_Events$onInput(_user$project$Droids$Update),
-								_1: {
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$value(model.input),
-									_1: {
-										ctor: '::',
-										_0: _elm_lang$html$Html_Events$onFocus(_user$project$Droids$SetFocus),
-										_1: {
-											ctor: '::',
-											_0: _elm_lang$html$Html_Events$onBlur(_user$project$Droids$RemoveFocus),
-											_1: {ctor: '[]'}
-										}
-									}
-								}
-							}
-						}
-					},
-					{ctor: '[]'}),
-				_1: {
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$input,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$type_('submit'),
-							_1: {
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$value('Add Droid'),
-								_1: {
-									ctor: '::',
-									_0: _elm_lang$html$Html_Events$onClick(_user$project$Droids$Add),
-									_1: {ctor: '[]'}
-								}
-							}
-						},
-						{ctor: '[]'}),
-					_1: {
-						ctor: '::',
-						_0: _user$project$Droids$droidsListView(model),
-						_1: {
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$div,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$class('model'),
-									_1: {ctor: '[]'}
-								},
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html$text(
-										_elm_lang$core$Basics$toString(model)),
-									_1: {ctor: '[]'}
-								}),
-							_1: {ctor: '[]'}
-						}
-					}
-				}
-			}
-		});
-};
-var _user$project$Droids$main = _elm_lang$html$Html$program(
-	{init: _user$project$Droids$init, update: _user$project$Droids$update, view: _user$project$Droids$view, subscriptions: _user$project$Droids$subscriptions})();
-
-var _user$project$Jedis$subscriptions = function (model) {
-	return _elm_lang$core$Platform_Sub$none;
-};
-var _user$project$Jedis$jediView = function (jedi) {
-	return A2(
-		_elm_lang$html$Html$li,
-		{ctor: '[]'},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$span,
-				{ctor: '[]'},
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html$text(jedi.name),
-					_1: {ctor: '[]'}
-				}),
-			_1: {ctor: '[]'}
-		});
-};
-var _user$project$Jedis$jedisListView = function (model) {
-	return A2(
-		_elm_lang$html$Html$ul,
-		{ctor: '[]'},
-		A2(
-			_elm_lang$core$List$map,
-			_user$project$Jedis$jediView,
-			A2(
-				_elm_lang$core$List$sortBy,
-				function (_) {
-					return _.name;
-				},
-				model.jedis)));
-};
-var _user$project$Jedis$initModel = {
-	input: '',
-	hasFocus: false,
-	jedis: {ctor: '[]'}
-};
-var _user$project$Jedis$init = {ctor: '_Tuple2', _0: _user$project$Jedis$initModel, _1: _elm_lang$core$Platform_Cmd$none};
-var _user$project$Jedis$Model = F3(
-	function (a, b, c) {
-		return {input: a, hasFocus: b, jedis: c};
-	});
-var _user$project$Jedis$Jedi = function (a) {
+var _user$project$State$Droid = function (a) {
 	return {name: a};
 };
-var _user$project$Jedis$update = F2(
-	function (msg, model) {
-		var _p0 = msg;
-		switch (_p0.ctor) {
-			case 'Add':
-				if (_elm_lang$core$String$isEmpty(model.input)) {
-					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
-				} else {
-					var newJedi = _user$project$Jedis$Jedi(model.input);
-					var newJedis = {ctor: '::', _0: newJedi, _1: model.jedis};
-					return {
-						ctor: '_Tuple2',
-						_0: _elm_lang$core$Native_Utils.update(
-							model,
-							{input: '', jedis: newJedis}),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				}
-			case 'Update':
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{input: _p0._0}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-			case 'SetFocus':
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{hasFocus: true}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-			default:
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{hasFocus: false}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-		}
-	});
-var _user$project$Jedis$RemoveFocus = {ctor: 'RemoveFocus'};
-var _user$project$Jedis$SetFocus = {ctor: 'SetFocus'};
-var _user$project$Jedis$Update = function (a) {
-	return {ctor: 'Update', _0: a};
+var _user$project$State$Jedi = function (a) {
+	return {name: a};
 };
-var _user$project$Jedis$Add = {ctor: 'Add'};
-var _user$project$Jedis$view = function (model) {
-	var focus = model.hasFocus ? ' has-focus' : '';
-	return A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$class(
-				A2(_elm_lang$core$Basics_ops['++'], 'component', focus)),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$h2,
-				{ctor: '[]'},
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html$text('Jedi\'s'),
-					_1: {ctor: '[]'}
-				}),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$input,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$type_('text'),
-						_1: {
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$placeholder('enter jedi name'),
-							_1: {
-								ctor: '::',
-								_0: _elm_lang$html$Html_Events$onInput(_user$project$Jedis$Update),
-								_1: {
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$value(model.input),
-									_1: {
-										ctor: '::',
-										_0: _elm_lang$html$Html_Events$onFocus(_user$project$Jedis$SetFocus),
-										_1: {
-											ctor: '::',
-											_0: _elm_lang$html$Html_Events$onBlur(_user$project$Jedis$RemoveFocus),
-											_1: {ctor: '[]'}
-										}
-									}
-								}
-							}
-						}
-					},
-					{ctor: '[]'}),
-				_1: {
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$input,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$type_('submit'),
-							_1: {
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$value('Add Jedi'),
-								_1: {
-									ctor: '::',
-									_0: _elm_lang$html$Html_Events$onClick(_user$project$Jedis$Add),
-									_1: {ctor: '[]'}
-								}
-							}
-						},
-						{ctor: '[]'}),
-					_1: {
-						ctor: '::',
-						_0: _user$project$Jedis$jedisListView(model),
-						_1: {
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$div,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$class('model'),
-									_1: {ctor: '[]'}
-								},
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html$text(
-										_elm_lang$core$Basics$toString(model)),
-									_1: {ctor: '[]'}
-								}),
-							_1: {ctor: '[]'}
-						}
-					}
-				}
-			}
-		});
+var _user$project$State$Droid_Delete = function (a) {
+	return {ctor: 'Droid_Delete', _0: a};
 };
-var _user$project$Jedis$main = _elm_lang$html$Html$program(
-	{init: _user$project$Jedis$init, update: _user$project$Jedis$update, view: _user$project$Jedis$view, subscriptions: _user$project$Jedis$subscriptions})();
+var _user$project$State$Droid_RemoveFocus = {ctor: 'Droid_RemoveFocus'};
+var _user$project$State$Droid_SetFocus = {ctor: 'Droid_SetFocus'};
+var _user$project$State$Droid_Update = function (a) {
+	return {ctor: 'Droid_Update', _0: a};
+};
+var _user$project$State$Droid_Add = {ctor: 'Droid_Add'};
+var _user$project$State$Jedi_RemoveFocus = {ctor: 'Jedi_RemoveFocus'};
+var _user$project$State$Jedi_SetFocus = {ctor: 'Jedi_SetFocus'};
+var _user$project$State$Jedi_Update = function (a) {
+	return {ctor: 'Jedi_Update', _0: a};
+};
+var _user$project$State$Jedi_Add = {ctor: 'Jedi_Add'};
 
-var _user$project$Main$subscriptions = function (model) {
-	return _elm_lang$core$Platform_Sub$none;
-};
-var _user$project$Main$stats = function (model) {
-	var droids = _elm_lang$core$Basics$toString(
-		_elm_lang$core$List$length(model.droids.droids));
-	var jedis = _elm_lang$core$Basics$toString(
-		_elm_lang$core$List$length(model.jedis.jedis));
-	return A2(
-		_elm_lang$core$Basics_ops['++'],
-		'Jedis: ',
-		A2(
-			_elm_lang$core$Basics_ops['++'],
-			jedis,
-			A2(_elm_lang$core$Basics_ops['++'], ', Droids: ', droids)));
-};
-var _user$project$Main$initModel = {jedis: _user$project$Jedis$initModel, droids: _user$project$Droids$initModel};
-var _user$project$Main$init = {ctor: '_Tuple2', _0: _user$project$Main$initModel, _1: _elm_lang$core$Platform_Cmd$none};
-var _user$project$Main$Model = F2(
-	function (a, b) {
-		return {jedis: a, droids: b};
-	});
-var _user$project$Main$DroidsMsg = function (a) {
-	return {ctor: 'DroidsMsg', _0: a};
-};
-var _user$project$Main$JedisMsg = function (a) {
-	return {ctor: 'JedisMsg', _0: a};
-};
-var _user$project$Main$update = F2(
+var _user$project$Update$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
-		if (_p0.ctor === 'JedisMsg') {
-			var _p1 = A2(_user$project$Jedis$update, _p0._0, model.jedis);
-			var updateJedis = _p1._0;
-			var cmd = _p1._1;
-			return {
-				ctor: '_Tuple2',
-				_0: _elm_lang$core$Native_Utils.update(
-					model,
-					{jedis: updateJedis}),
-				_1: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$JedisMsg, cmd)
-			};
-		} else {
-			var _p2 = A2(_user$project$Droids$update, _p0._0, model.droids);
-			var updateModel = _p2._0;
-			var cmd = _p2._1;
-			return {
-				ctor: '_Tuple2',
-				_0: _elm_lang$core$Native_Utils.update(
-					model,
-					{droids: updateModel}),
-				_1: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$DroidsMsg, cmd)
-			};
-		}
+		return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
 	});
-var _user$project$Main$view = function (model) {
-	var droidsView = A2(
-		_elm_lang$html$Html$map,
-		_user$project$Main$DroidsMsg,
-		_user$project$Droids$view(model.droids));
-	var jedisView = A2(
-		_elm_lang$html$Html$map,
-		_user$project$Main$JedisMsg,
-		_user$project$Jedis$view(model.jedis));
+var _user$project$Update$initModel = {
+	inputJediName: '',
+	inputDroidName: '',
+	jediHasFocus: false,
+	droidHasFocus: false,
+	jedis: {ctor: '[]'},
+	droids: {ctor: '[]'}
+};
+
+var _user$project$View$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{
@@ -12939,19 +12353,7 @@ var _user$project$Main$view = function (model) {
 				{
 					ctor: '::',
 					_0: _elm_lang$html$Html$text('My Star Wars Collection '),
-					_1: {
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$span,
-							{ctor: '[]'},
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html$text(
-									_user$project$Main$stats(model)),
-								_1: {ctor: '[]'}
-							}),
-						_1: {ctor: '[]'}
-					}
+					_1: {ctor: '[]'}
 				}),
 			_1: {
 				ctor: '::',
@@ -12962,15 +12364,7 @@ var _user$project$Main$view = function (model) {
 						_0: _elm_lang$html$Html_Attributes$class('components'),
 						_1: {ctor: '[]'}
 					},
-					{
-						ctor: '::',
-						_0: jedisView,
-						_1: {
-							ctor: '::',
-							_0: droidsView,
-							_1: {ctor: '[]'}
-						}
-					}),
+					{ctor: '[]'}),
 				_1: {
 					ctor: '::',
 					_0: A2(
@@ -12991,13 +12385,18 @@ var _user$project$Main$view = function (model) {
 			}
 		});
 };
+
+var _user$project$Main$subscriptions = function (model) {
+	return _elm_lang$core$Platform_Sub$none;
+};
+var _user$project$Main$init = {ctor: '_Tuple2', _0: _user$project$Update$initModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$Main$main = _elm_lang$html$Html$program(
-	{init: _user$project$Main$init, update: _user$project$Main$update, view: _user$project$Main$view, subscriptions: _user$project$Main$subscriptions})();
+	{init: _user$project$Main$init, update: _user$project$Update$update, view: _user$project$View$view, subscriptions: _user$project$Main$subscriptions})();
 
 var Elm = {};
 Elm['Main'] = Elm['Main'] || {};
 if (typeof _user$project$Main$main !== 'undefined') {
-    _user$project$Main$main(Elm['Main'], 'Main', {"types":{"unions":{"Droids.Msg":{"args":[],"tags":{"Add":[],"RemoveFocus":[],"SetFocus":[],"Delete":["Droids.Droid"],"Update":["String"]}},"Jedis.Msg":{"args":[],"tags":{"Add":[],"RemoveFocus":[],"SetFocus":[],"Update":["String"]}},"Main.Msg":{"args":[],"tags":{"JedisMsg":["Jedis.Msg"],"DroidsMsg":["Droids.Msg"]}}},"aliases":{"Droids.Droid":{"args":[],"type":"{ name : String, deleted : Bool }"}},"message":"Main.Msg"},"versions":{"elm":"0.18.0"}});
+    _user$project$Main$main(Elm['Main'], 'Main', {"types":{"unions":{"State.Msg":{"args":[],"tags":{"Jedi_RemoveFocus":[],"Droid_Delete":["State.Droid"],"Droid_Update":["String"],"Droid_Add":[],"Jedi_SetFocus":[],"Jedi_Add":[],"Jedi_Update":["String"],"Droid_SetFocus":[],"Droid_RemoveFocus":[]}}},"aliases":{"State.Droid":{"args":[],"type":"{ name : String }"}},"message":"State.Msg"},"versions":{"elm":"0.18.0"}});
 }
 
 if (typeof define === "function" && define['amd'])
