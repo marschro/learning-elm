@@ -1,5 +1,0 @@
-var _user$project$Widgets_Main_Model$Model = function (a) {
-	return {page: a};
-};
-var _user$project$Widgets_Main_Model$DetailsPage = {ctor: 'DetailsPage'};
-var _user$project$Widgets_Main_Model$HomePage = {ctor: 'HomePage'};

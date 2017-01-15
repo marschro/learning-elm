@@ -1,7 +1,0 @@
-var _user$project$State$Model = F3(
-	function (a, b, c) {
-		return {notifications: a, autoplay: b, location: c};
-	});
-var _user$project$State$ToggleLocation = {ctor: 'ToggleLocation'};
-var _user$project$State$ToggleAutoplay = {ctor: 'ToggleAutoplay'};
-var _user$project$State$ToggleNotifications = {ctor: 'ToggleNotifications'};
