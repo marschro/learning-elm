@@ -1,10 +1,9 @@
-module Main exposing (..)
+module Main exposing (main)
 
+import State exposing (Model, Msg(..))
+import Update exposing (update, initModel)
+import View exposing (view)
 import Html exposing (Html)
-import State as Msg exposing (Msg)
-import State as Model exposing (Model)
-import Update exposing (..)
-import View exposing (..)
 
 
 -- MAIN - The Program
@@ -26,7 +25,7 @@ main =
 
 init : ( Model, Cmd Msg )
 init =
-    ( Update.initModel, Cmd.none )
+    ( initModel, Cmd.none )
 
 
 

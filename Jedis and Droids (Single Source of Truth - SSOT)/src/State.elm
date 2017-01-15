@@ -1,4 +1,4 @@
-module State exposing (Model, Msg)
+module State exposing (..)
 
 -- MODEL - never run without the model, cause it is state
 
@@ -32,4 +32,3 @@ type Msg
     | Droid_Update String
     | Droid_SetFocus
     | Droid_RemoveFocus
-    | Droid_Delete Droid
