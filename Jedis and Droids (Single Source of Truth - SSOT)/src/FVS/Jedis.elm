@@ -1,4 +1,4 @@
-module Jedis exposing (view)
+module FVS.Jedis exposing (view)
 
 import State exposing (..)
 import Html exposing (..)

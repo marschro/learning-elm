@@ -12435,7 +12435,7 @@ var _user$project$State$Jedi_Update = function (a) {
 };
 var _user$project$State$Jedi_Add = {ctor: 'Jedi_Add'};
 
-var _user$project$Droids$droidView = function (droid) {
+var _user$project$FVS_Droids$droidView = function (droid) {
 	return A2(
 		_elm_lang$html$Html$li,
 		{ctor: '[]'},
@@ -12452,13 +12452,13 @@ var _user$project$Droids$droidView = function (droid) {
 			_1: {ctor: '[]'}
 		});
 };
-var _user$project$Droids$droidsListView = function (model) {
+var _user$project$FVS_Droids$droidsListView = function (model) {
 	return A2(
 		_elm_lang$html$Html$ul,
 		{ctor: '[]'},
 		A2(
 			_elm_lang$core$List$map,
-			_user$project$Droids$droidView,
+			_user$project$FVS_Droids$droidView,
 			A2(
 				_elm_lang$core$List$sortBy,
 				function (_) {
@@ -12466,7 +12466,7 @@ var _user$project$Droids$droidsListView = function (model) {
 				},
 				model.droids)));
 };
-var _user$project$Droids$view = function (model) {
+var _user$project$FVS_Droids$view = function (model) {
 	var focus = model.droidHasFocus ? ' has-focus' : '';
 	return A2(
 		_elm_lang$html$Html$div,
@@ -12536,7 +12536,7 @@ var _user$project$Droids$view = function (model) {
 						{ctor: '[]'}),
 					_1: {
 						ctor: '::',
-						_0: _user$project$Droids$droidsListView(model),
+						_0: _user$project$FVS_Droids$droidsListView(model),
 						_1: {ctor: '[]'}
 					}
 				}
@@ -12544,7 +12544,7 @@ var _user$project$Droids$view = function (model) {
 		});
 };
 
-var _user$project$Jedis$jediView = function (jedi) {
+var _user$project$FVS_Jedis$jediView = function (jedi) {
 	return A2(
 		_elm_lang$html$Html$li,
 		{ctor: '[]'},
@@ -12561,13 +12561,13 @@ var _user$project$Jedis$jediView = function (jedi) {
 			_1: {ctor: '[]'}
 		});
 };
-var _user$project$Jedis$jedisListView = function (model) {
+var _user$project$FVS_Jedis$jedisListView = function (model) {
 	return A2(
 		_elm_lang$html$Html$ul,
 		{ctor: '[]'},
 		A2(
 			_elm_lang$core$List$map,
-			_user$project$Jedis$jediView,
+			_user$project$FVS_Jedis$jediView,
 			A2(
 				_elm_lang$core$List$sortBy,
 				function (_) {
@@ -12575,7 +12575,7 @@ var _user$project$Jedis$jedisListView = function (model) {
 				},
 				model.jedis)));
 };
-var _user$project$Jedis$view = function (model) {
+var _user$project$FVS_Jedis$view = function (model) {
 	var focus = model.jediHasFocus ? ' has-focus' : '';
 	return A2(
 		_elm_lang$html$Html$div,
@@ -12645,7 +12645,7 @@ var _user$project$Jedis$view = function (model) {
 						{ctor: '[]'}),
 					_1: {
 						ctor: '::',
-						_0: _user$project$Jedis$jedisListView(model),
+						_0: _user$project$FVS_Jedis$jedisListView(model),
 						_1: {ctor: '[]'}
 					}
 				}
@@ -12773,10 +12773,10 @@ var _user$project$View$view = function (model) {
 					},
 					{
 						ctor: '::',
-						_0: _user$project$Jedis$view(model),
+						_0: _user$project$FVS_Jedis$view(model),
 						_1: {
 							ctor: '::',
-							_0: _user$project$Droids$view(model),
+							_0: _user$project$FVS_Droids$view(model),
 							_1: {ctor: '[]'}
 						}
 					}),

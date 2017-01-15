@@ -1,4 +1,4 @@
-module Droids exposing (view)
+module FVS.Droids exposing (view)
 
 import State exposing (..)
 import Html exposing (..)

@@ -3,8 +3,8 @@ module View exposing (view)
 import State exposing (Model, Msg(..))
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Jedis exposing (view)
-import Droids exposing (view)
+import FVS.Jedis as Jedis exposing (view)
+import FVS.Droids as Droids exposing (view)
 
 
 view : Model -> Html Msg
