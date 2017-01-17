@@ -114,7 +114,7 @@ type alias User =
 
 
 lala =
-    { name = "Lala"
+    { name = "Lala Toskoljowitsch"
     , bio = "Lorem ipsum dolor sit..."
     , pic = "/users/lala/avatar.png"
     }
