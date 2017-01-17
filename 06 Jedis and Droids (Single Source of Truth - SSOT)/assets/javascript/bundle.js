@@ -12416,15 +12416,11 @@ var _user$project$State$Model = F6(
 	function (a, b, c, d, e, f) {
 		return {inputJediName: a, inputDroidName: b, jediHasFocus: c, droidHasFocus: d, jedis: e, droids: f};
 	});
-var _user$project$State$Droid = F2(
-	function (a, b) {
-		return {name: a, deleted: b};
-	});
-var _user$project$State$Jedi = function (a) {
+var _user$project$State$Droid = function (a) {
 	return {name: a};
 };
-var _user$project$State$Droid_Delete = function (a) {
-	return {ctor: 'Droid_Delete', _0: a};
+var _user$project$State$Jedi = function (a) {
+	return {name: a};
 };
 var _user$project$State$Droid_RemoveFocus = {ctor: 'Droid_RemoveFocus'};
 var _user$project$State$Droid_SetFocus = {ctor: 'Droid_SetFocus'};
@@ -12453,42 +12449,12 @@ var _user$project$FVS_Droids$droidView = function (droid) {
 					_0: _elm_lang$html$Html$text(droid.name),
 					_1: {ctor: '[]'}
 				}),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$input,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$type_('button'),
-						_1: {
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$value('Delete'),
-							_1: {
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$class('delete'),
-								_1: {
-									ctor: '::',
-									_0: _elm_lang$html$Html_Events$onClick(
-										_user$project$State$Droid_Delete(droid)),
-									_1: {ctor: '[]'}
-								}
-							}
-						}
-					},
-					{ctor: '[]'}),
-				_1: {ctor: '[]'}
-			}
+			_1: {ctor: '[]'}
 		});
 };
 var _user$project$FVS_Droids$droidsListView = function (model) {
-	var filteredDroids = A2(
-		_elm_lang$core$List$filter,
-		function (droid) {
-			return !droid.deleted;
-		},
-		model.droids);
 	return (_elm_lang$core$Native_Utils.cmp(
-		_elm_lang$core$List$length(filteredDroids),
+		_elm_lang$core$List$length(model.droids),
 		0) > 0) ? A2(
 		_elm_lang$html$Html$ul,
 		{ctor: '[]'},
@@ -12500,7 +12466,7 @@ var _user$project$FVS_Droids$droidsListView = function (model) {
 				function (_) {
 					return _.name;
 				},
-				filteredDroids))) : A2(
+				model.droids))) : A2(
 		_elm_lang$html$Html$div,
 		{ctor: '[]'},
 		{ctor: '[]'});
@@ -12738,7 +12704,7 @@ var _user$project$Update$update = F2(
 				if (_elm_lang$core$String$isEmpty(model.inputDroidName)) {
 					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
 				} else {
-					var newDroid = A2(_user$project$State$Droid, model.inputDroidName, false);
+					var newDroid = _user$project$State$Droid(model.inputDroidName);
 					var newDroids = {ctor: '::', _0: newDroid, _1: model.droids};
 					return {
 						ctor: '_Tuple2',
@@ -12764,28 +12730,12 @@ var _user$project$Update$update = F2(
 						{droidHasFocus: true}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
-			case 'Droid_RemoveFocus':
+			default:
 				return {
 					ctor: '_Tuple2',
 					_0: _elm_lang$core$Native_Utils.update(
 						model,
 						{droidHasFocus: false}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-			default:
-				var newDroidsList = A2(
-					_elm_lang$core$List$map,
-					function (droid) {
-						return _elm_lang$core$Native_Utils.eq(droid, _p0._0) ? _elm_lang$core$Native_Utils.update(
-							droid,
-							{deleted: true}) : droid;
-					},
-					model.droids);
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{droids: newDroidsList}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
 		}
@@ -12866,7 +12816,7 @@ var _user$project$Main$main = _elm_lang$html$Html$program(
 var Elm = {};
 Elm['Main'] = Elm['Main'] || {};
 if (typeof _user$project$Main$main !== 'undefined') {
-    _user$project$Main$main(Elm['Main'], 'Main', {"types":{"unions":{"State.Msg":{"args":[],"tags":{"Jedi_RemoveFocus":[],"Droid_Delete":["State.Droid"],"Droid_Update":["String"],"Droid_Add":[],"Jedi_SetFocus":[],"Jedi_Add":[],"Jedi_Update":["String"],"Droid_SetFocus":[],"Droid_RemoveFocus":[]}}},"aliases":{"State.Droid":{"args":[],"type":"{ name : String, deleted : Bool }"}},"message":"State.Msg"},"versions":{"elm":"0.18.0"}});
+    _user$project$Main$main(Elm['Main'], 'Main', {"types":{"unions":{"State.Msg":{"args":[],"tags":{"Jedi_RemoveFocus":[],"Droid_Update":["String"],"Droid_Add":[],"Jedi_SetFocus":[],"Jedi_Add":[],"Jedi_Update":["String"],"Droid_SetFocus":[],"Droid_RemoveFocus":[]}}},"aliases":{},"message":"State.Msg"},"versions":{"elm":"0.18.0"}});
 }
 
 if (typeof define === "function" && define['amd'])

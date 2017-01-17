@@ -33,25 +33,14 @@ view model =
 
 droidsListView : Model -> Html Msg
 droidsListView model =
-    let
-        filteredDroids =
-            List.filter (\droid -> not droid.deleted) model.droids
-    in
-        if List.length filteredDroids > 0 then
-            filteredDroids |> List.sortBy .name |> List.map droidView |> ul []
-        else
-            div [] []
+    if List.length model.droids > 0 then
+        model.droids |> List.sortBy .name |> List.map droidView |> ul []
+    else
+        div [] []
 
 
 droidView : Droid -> Html Msg
 droidView droid =
     li []
         [ span [] [ text droid.name ]
-        , input
-            [ type_ "button"
-            , value "Delete"
-            , class "delete"
-            , onClick (Droid_Delete droid)
-            ]
-            []
         ]
