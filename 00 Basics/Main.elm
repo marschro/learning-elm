@@ -4,6 +4,7 @@ module Main exposing (..)
 {- a multiline comment
    {- can be nested -}
 -}
+-- ALLGEMEINES
 
 
 zahl =
@@ -14,11 +15,15 @@ float =
     0.5
 
 
+char =
+    'a'
+
+
 string =
     "Moin"
 
 
-bigString =
+longString =
     """
     aksjdgbas dbhsjka sbdhka
     kahsgdhasjkgd aksjdgbas
@@ -29,39 +34,48 @@ concat =
     "Hallo" ++ " Welt"
 
 
-char =
-    'a'
+
+-- BOOLEAN
 
 
 bool =
     True
 
 
+
+-- LISTEN
+
+
 list =
     [ 1, 2, 2, 3, 4, 5, 6 ]
 
 
-people =
-    [ "Alf", "Mickey", "Asterix" ]
+names =
+    [ "Schub", "Didu", "Bada" ]
 
 
 largerList =
     0 :: 1 :: 12 :: list
 
 
+
+-- TUPEL
+
+
 error =
     ( 3, "Serious Error of Level 3" )
+
+
+
+-- RECORDS
 
 
 bill =
     { name = "Gates", age = 57 }
 
 
-largerZero =
-    if 0 > 0 then
-        True
-    else
-        False
+
+-- FUNKTIONEN
 
 
 square a =
@@ -76,11 +90,42 @@ angriff wann wieviele =
     toString (wieviele) ++ " Reiter greifen " ++ wann ++ " an"
 
 
+
+-- CONDITIONS
+
+
+largerZero =
+    if 0 > 0 then
+        True
+    else
+        False
+
+
+
+-- TYPE ALIASSES
+
+
 type alias User =
     { name : String
     , bio : String
     , pic : String
+    , age : Maybe Int
     }
+
+
+lala =
+    { name = "Lala"
+    , bio = "Lorem ipsum dolor sit..."
+    , pic = "/users/lala/avatar.png"
+    }
+
+
+getName user =
+    user.name
+
+
+
+-- UNION TYPES
 
 
 type Visibility
@@ -89,12 +134,32 @@ type Visibility
     | Completed
 
 
-type Maybe a
-    = Nothing
-    | Just a
-
-
-type alias Dog =
-    { name : String
-    , age : Maybe Int
+type alias Task =
+    { active : Bool
+    , completed : Bool
     }
+
+
+
+-- PATERN MATCHING WITH UNION TYPES
+
+
+showTasks : Visibility -> List Task -> List Task
+showTasks msg tasks =
+    case msg of
+        All ->
+            tasks
+
+        Active ->
+            List.filter
+                (\task ->
+                    task.active == not False
+                )
+                tasks
+
+        Completed ->
+            List.filter
+                (\task ->
+                    task.completed == True
+                )
+                tasks
