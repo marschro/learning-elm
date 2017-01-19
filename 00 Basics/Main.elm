@@ -7,22 +7,27 @@ module Main exposing (..)
 -- ALLGEMEINES
 
 
+zahl : Int
 zahl =
     4
 
 
+float : Float
 float =
     0.5
 
 
+char : Char
 char =
     'a'
 
 
+string : String
 string =
     "Moin"
 
 
+longString : String
 longString =
     """
     aksjdgbas dbhsjka sbdhka
@@ -38,6 +43,7 @@ concat =
 -- BOOLEAN
 
 
+bool : Bool
 bool =
     True
 
@@ -63,15 +69,15 @@ largerList =
 
 
 error =
-    ( 3, "Serious Error of Level 3" )
+    ( 3, "Serious Level 3 Error !!! " )
 
 
 
 -- RECORDS
 
 
-bill =
-    { name = "Gates", age = 57 }
+tom =
+    { name = "Morello", age = 57 }
 
 
 
