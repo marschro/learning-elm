@@ -34,7 +34,7 @@ type Msg
 
 initModel : Model
 initModel =
-    { url = "https://klipfolio.devpunx.com/data/stores?api_key=locomoto"
+    { url = "http://api.icndb.com/jokes/random"
     , data = ""
     , message = ""
     }
@@ -78,7 +78,7 @@ getDataStores url =
 
 decodeJson : Json.Decoder String
 decodeJson =
-    Json.at [ "1" ] Json.string
+    Json.at [ "value", "joke" ] Json.string
 
 
 
@@ -88,7 +88,8 @@ decodeJson =
 view : Model -> Html Msg
 view model =
     div []
-        [ input [ type_ "submit", value "Get Stores", onClick InitRequest ] []
+        [ h1 [] [ text "Chuck Norris Jokes" ]
+        , input [ type_ "submit", value "Get Joke", onClick InitRequest ] []
         , div [] [ text model.message ]
         , div [] [ text model.data ]
         ]
