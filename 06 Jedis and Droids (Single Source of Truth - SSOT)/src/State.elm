@@ -15,6 +15,7 @@ type alias Model =
 
 type alias Droid =
     { name : String
+    , deleted : Bool
     }
 
 
@@ -32,3 +33,4 @@ type Msg
     | Droid_Update String
     | Droid_SetFocus
     | Droid_RemoveFocus
+    | Droid_delete

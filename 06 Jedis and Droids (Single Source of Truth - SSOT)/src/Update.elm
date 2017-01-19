@@ -45,7 +45,7 @@ update msg model =
             else
                 let
                     newDroid =
-                        Droid model.inputDroidName
+                        Droid model.inputDroidName False
 
                     newDroids =
                         newDroid :: model.droids

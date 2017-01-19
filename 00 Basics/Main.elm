@@ -36,7 +36,7 @@ longString =
 
 
 concat =
-    "Hallo" ++ " Welt"
+    1 + 2
 
 
 
@@ -52,12 +52,14 @@ bool =
 -- LISTEN
 
 
+list : List number
 list =
     [ 1, 2, 2, 3, 4, 5, 6 ]
 
 
+names : List String
 names =
-    [ "Schub", "Didu", "Bada" ]
+    [ "Schub", "asd", "Bada" ]
 
 
 largerList =
@@ -84,14 +86,17 @@ tom =
 -- FUNKTIONEN
 
 
+square : Int -> Int
 square a =
     a * 2
 
 
+add : Int -> Int -> ( Int, Int )
 add a b =
-    a + b
+    ( a, b )
 
 
+angriff : String -> Int -> String
 angriff wann wieviele =
     toString (wieviele) ++ " Reiter greifen " ++ wann ++ " an"
 
@@ -138,6 +143,7 @@ type Visibility
     = All
     | Active
     | Completed
+    | Wichtig
 
 
 type alias Task =
@@ -169,3 +175,6 @@ showTasks msg tasks =
                     task.completed == True
                 )
                 tasks
+
+        Wichtig ->
+            tasks
