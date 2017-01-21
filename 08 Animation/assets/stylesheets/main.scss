@@ -1,0 +1,23 @@
+@import "bourbon/bourbon";
+@import "base/base";
+@import "neat/neat";
+
+
+body {
+    background-color: #FFF;
+}
+textarea, input, button, select {
+    outline: none;
+}
+h1 {
+    span {
+        font-size: 60%;
+    }
+}
+// Main
+.main {
+}
+
+.submenu {
+    position: relative;
+}
