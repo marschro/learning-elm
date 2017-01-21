@@ -8290,7 +8290,20 @@ var _user$project$State$Jedi_Add = {ctor: 'Jedi_Add'};
 var _user$project$FVS_Droids$droidView = function (droid) {
 	return A2(
 		_elm_lang$html$Html$li,
-		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html_Attributes$id(droid.name),
+			_1: {
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$style(
+					{
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'display', _1: 'none'},
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			}
+		},
 		{
 			ctor: '::',
 			_0: A2(
@@ -8543,12 +8556,12 @@ var _user$project$FVS_Jedis$view = function (model) {
 var _user$project$Subscriptions$subscriptions = function (model) {
 	return _elm_lang$core$Platform_Sub$none;
 };
-var _user$project$Subscriptions$send = _elm_lang$core$Native_Platform.outgoingPort(
-	'send',
+var _user$project$Subscriptions$animate = _elm_lang$core$Native_Platform.outgoingPort(
+	'animate',
 	function (v) {
 		return {id: v.id, action: v.action};
 	});
-var _user$project$Subscriptions$receive = _elm_lang$core$Native_Platform.incomingPort('receive', _elm_lang$core$Json_Decode$string);
+var _user$project$Subscriptions$animationDone = _elm_lang$core$Native_Platform.incomingPort('animationDone', _elm_lang$core$Json_Decode$string);
 
 var _user$project$Update$update = F2(
 	function (msg, model) {
@@ -8603,7 +8616,8 @@ var _user$project$Update$update = F2(
 						_0: _elm_lang$core$Native_Utils.update(
 							model,
 							{inputDroidName: '', droids: newDroids}),
-						_1: _elm_lang$core$Platform_Cmd$none
+						_1: _user$project$Subscriptions$animate(
+							{id: model.inputDroidName, action: 'fadeIn'})
 					};
 				}
 			case 'Droid_Update':

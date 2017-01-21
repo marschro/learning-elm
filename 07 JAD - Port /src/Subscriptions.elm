@@ -1,4 +1,4 @@
-port module Subscriptions exposing (subscriptions)
+port module Subscriptions exposing (..)
 
 import State exposing (Model, Msg(..), Call)
 
@@ -12,11 +12,11 @@ subscriptions model =
 -- port for sending strings out to JavaScript
 
 
-port send : Call -> Cmd msg
+port animate : Call -> Cmd msg
 
 
 
 -- port for listening for suggestions from JavaScript
 
 
-port receive : (String -> msg) -> Sub msg
+port animationDone : (String -> msg) -> Sub msg

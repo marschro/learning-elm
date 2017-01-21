@@ -45,7 +45,7 @@ droidsListView model =
 
 droidView : Droid -> Html Msg
 droidView droid =
-    li []
+    li [ id droid.name, style [ ( "display", "none" ) ] ]
         [ span []
             [ text droid.name
             , input

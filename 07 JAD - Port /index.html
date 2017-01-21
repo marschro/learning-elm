@@ -6,6 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Jedis and Droids (Single Source of Truth - SSOT)</title>
       <link rel="stylesheet" href="assets/stylesheets/main.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     </head>
 
     <body>
@@ -14,9 +15,14 @@
       <script>
         var node = document.getElementById('app')
         var app = Elm.Main.embed(node)
-        app.ports.send.subscribe(function(call) {
-            console.log(call)
-            //app.ports.suggestions.send(suggestions)
+        app.ports.animate.subscribe(function(call) {
+            setTimeout(function() {
+                var e = $( "#" + call.id)
+                $(e).slideDown(1000)
+            }, 100)
+
+            //$( "#" + call.id ).hide()
+            //app.ports.animationDone.send(suggestions)
         });
 
       </script>

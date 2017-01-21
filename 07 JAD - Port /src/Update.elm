@@ -51,7 +51,7 @@ update msg model =
                     newDroids =
                         newDroid :: model.droids
                 in
-                    ( { model | inputDroidName = "", droids = newDroids }, Cmd.none )
+                    ( { model | inputDroidName = "", droids = newDroids }, animate ({ id = model.inputDroidName, action = "fadeIn" }) )
 
         Droid_Update string ->
             ( { model | inputDroidName = string }, Cmd.none )
