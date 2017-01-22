@@ -18,6 +18,27 @@ h1 {
 .main {
 }
 
-.submenu {
+#menu-button {
+    &:active {
+        background-color: lighten($blue, 20%);
+    }
+}
+.menu {
     position: relative;
+    width: 100%;
+    background-color: #333;
+    color: #DDD;
+
+    p {
+        padding: 1rem;
+    }
+}
+
+.model {
+    margin-top: 5rem;
+    display: block;
+    background-color: #CCC;
+    border: 1px solid #BBB;
+    padding: 0.5rem;
+    color: #666;
 }

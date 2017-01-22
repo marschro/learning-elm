@@ -15525,11 +15525,12 @@ var _user$project$State$Animate = function (a) {
 };
 var _user$project$State$ToggleMenu = {ctor: 'ToggleMenu'};
 
+var _user$project$Update$menuHeight = 300;
 var _user$project$Update$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
 		if (_p0.ctor === 'ToggleMenu') {
-			var toggleValue = function () {
+			var menuState = function () {
 				var _p1 = model.menuIsVisible;
 				if (_p1 === true) {
 					return false;
@@ -15537,23 +15538,33 @@ var _user$project$Update$update = F2(
 					return true;
 				}
 			}();
-			var toggleStyle = model.menuIsVisible ? {
-				ctor: '::',
-				_0: _mdgriffith$elm_style_animation$Animation$left(
-					_mdgriffith$elm_style_animation$Animation$px(-100)),
-				_1: {
-					ctor: '::',
-					_0: _mdgriffith$elm_style_animation$Animation$opacity(0.0),
-					_1: {ctor: '[]'}
-				}
-			} : {
+			var toggleStyle = menuState ? {
 				ctor: '::',
 				_0: _mdgriffith$elm_style_animation$Animation$left(
 					_mdgriffith$elm_style_animation$Animation$px(0)),
 				_1: {
 					ctor: '::',
 					_0: _mdgriffith$elm_style_animation$Animation$opacity(1.0),
-					_1: {ctor: '[]'}
+					_1: {
+						ctor: '::',
+						_0: _mdgriffith$elm_style_animation$Animation$height(
+							_mdgriffith$elm_style_animation$Animation$px(_user$project$Update$menuHeight)),
+						_1: {ctor: '[]'}
+					}
+				}
+			} : {
+				ctor: '::',
+				_0: _mdgriffith$elm_style_animation$Animation$left(
+					_mdgriffith$elm_style_animation$Animation$px(-40)),
+				_1: {
+					ctor: '::',
+					_0: _mdgriffith$elm_style_animation$Animation$opacity(0.0),
+					_1: {
+						ctor: '::',
+						_0: _mdgriffith$elm_style_animation$Animation$height(
+							_mdgriffith$elm_style_animation$Animation$px(0)),
+						_1: {ctor: '[]'}
+					}
 				}
 			};
 			var menuStyle = A2(
@@ -15568,7 +15579,7 @@ var _user$project$Update$update = F2(
 				ctor: '_Tuple2',
 				_0: _elm_lang$core$Native_Utils.update(
 					model,
-					{menuIsVisible: toggleValue, menuStyle: menuStyle}),
+					{menuIsVisible: menuState, menuStyle: menuStyle}),
 				_1: _elm_lang$core$Platform_Cmd$none
 			};
 		} else {
@@ -15589,11 +15600,16 @@ var _user$project$Update$initModel = {
 		{
 			ctor: '::',
 			_0: _mdgriffith$elm_style_animation$Animation$left(
-				_mdgriffith$elm_style_animation$Animation$px(-100)),
+				_mdgriffith$elm_style_animation$Animation$px(-40)),
 			_1: {
 				ctor: '::',
 				_0: _mdgriffith$elm_style_animation$Animation$opacity(0.0),
-				_1: {ctor: '[]'}
+				_1: {
+					ctor: '::',
+					_0: _mdgriffith$elm_style_animation$Animation$height(
+						_mdgriffith$elm_style_animation$Animation$px(0)),
+					_1: {ctor: '[]'}
+				}
 			}
 		})
 };
@@ -15618,7 +15634,7 @@ var _user$project$View$view = function (model) {
 	var styles = _mdgriffith$elm_style_animation$Animation$render(model.menuStyle);
 	var attributes = {
 		ctor: '::',
-		_0: _elm_lang$html$Html_Attributes$class('submenu'),
+		_0: _elm_lang$html$Html_Attributes$class('menu'),
 		_1: styles
 	};
 	return A2(
@@ -15637,7 +15653,7 @@ var _user$project$View$view = function (model) {
 					_0: _elm_lang$html$Html_Attributes$type_('submit'),
 					_1: {
 						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$id('menu'),
+						_0: _elm_lang$html$Html_Attributes$id('menu-button'),
 						_1: {
 							ctor: '::',
 							_0: _elm_lang$html$Html_Events$onClick(_user$project$State$ToggleMenu),
@@ -15661,10 +15677,44 @@ var _user$project$View$view = function (model) {
 					attributes,
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html$text('Dies ist ein Menü'),
+						_0: A2(
+							_elm_lang$html$Html$p,
+							{ctor: '[]'},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text('Dies ist ein Menü oder sowas...'),
+								_1: {ctor: '[]'}
+							}),
 						_1: {ctor: '[]'}
 					}),
-				_1: {ctor: '[]'}
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{ctor: '[]'},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$p,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('model'),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text(
+									_elm_lang$core$Basics$toString(model)),
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					}
+				}
 			}
 		});
 };
