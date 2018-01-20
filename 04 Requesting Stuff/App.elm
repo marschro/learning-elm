@@ -87,12 +87,19 @@ decodeJson =
 
 view : Model -> Html Msg
 view model =
-    div []
-        [ h1 [] [ text "Chuck Norris Jokes" ]
-        , input [ type_ "submit", value "Get Joke", onClick InitRequest ] []
-        , div [] [ text model.message ]
-        , div [] [ text model.data ]
-        ]
+    let
+        myStyle =
+            style
+                [ ( "fontSize", "30pt" )
+                , ( "width", "80%" )
+                ]
+    in
+        div []
+            [ h1 [] [ text "Chuck Norris Jokes" ]
+            , input [ type_ "submit", value "Get Joke", onClick InitRequest ] []
+            , div [] [ text model.message ]
+            , div [ myStyle ] [ text model.data ]
+            ]
 
 
 

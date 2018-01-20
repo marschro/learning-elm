@@ -10,7 +10,7 @@ import Json.Decode as Decode
 main : Program Never Model Msg
 main =
     Html.program
-        { init = init "cats"
+        { init = init "cat"
         , view = view
         , update = update
         , subscriptions = subscriptions
@@ -43,11 +43,17 @@ type Msg
     | NewGif (Result Http.Error String)
 
 
+
+-- somhow this is fucked up - the loading gif is not shown???
+
+
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         MorePlease ->
-            ( model, getRandomGif model.topic )
+            ( { model | gifUrl = "waiting.gif" }
+            , getRandomGif model.topic
+            )
 
         NewGif (Ok newUrl) ->
             ( Model model.topic newUrl, Cmd.none )
@@ -66,7 +72,7 @@ view model =
         [ h2 [] [ text model.topic ]
         , button [ onClick MorePlease ] [ text "More Please!" ]
         , br [] []
-        , img [ src model.gifUrl ] []
+        , img [ src model.gifUrl, style [ ( "width", "auto" ) ] ] []
         ]
 
 

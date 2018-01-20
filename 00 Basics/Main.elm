@@ -96,11 +96,6 @@ add a b =
     ( a, b )
 
 
-angriff : String -> Int -> String
-angriff wann wieviele =
-    toString (wieviele) ++ " Reiter greifen " ++ wann ++ " an"
-
-
 
 -- CONDITIONS
 
@@ -142,8 +137,8 @@ getName user =
 type Visibility
     = All
     | Active
-    | Completed
-    | Wichtig
+    | Finished
+    | Important
 
 
 type alias Task =
@@ -169,12 +164,45 @@ showTasks msg tasks =
                 )
                 tasks
 
-        Completed ->
+        Finished ->
             List.filter
                 (\task ->
                     task.completed == True
                 )
                 tasks
 
-        Wichtig ->
+        Important ->
             tasks
+
+
+
+-- Impossible States
+-- old
+
+
+type alias TaskX =
+    { name : String
+    , inProgress : Bool
+    , progress : Int
+    , completed : Bool
+    , completedBy : String
+    , waiting : Bool
+    , waitingReason : List String
+    }
+
+
+
+-- cleaner
+
+
+type Status
+    = Open
+    | InProgress Int
+    | Waiting List String
+    | Completed String
+
+
+type alias TaskY =
+    { name : String
+    , status : Status
+    }
