@@ -233,3 +233,33 @@ val2 =
 -- type Result err success
 --     = Error error
 --     | Ok success
+-- EVERYTHING IS IMMUTABLE
+
+
+type alias Animal =
+    { name : String
+    , fur : String
+    , age : Int
+    }
+
+
+myAnimal : Animal
+myAnimal =
+    { name = "Stinky"
+    , fur = "brown"
+    , age = 4
+    }
+
+
+
+-- if not immutable, so how to update or change then ???
+
+
+hazBirthday : Animal -> Animal
+hazBirthday animal =
+    { animal | age = (animal.age + 1) }
+
+
+cloneWithNewName : Animal -> Animal
+cloneWithNewName animal =
+    { animal | name = "Stinky-2" }
