@@ -206,3 +206,30 @@ type alias TaskY =
     { name : String
     , status : Status
     }
+
+
+
+-- THERE IS NO UNDEFINED, NULL or NILL or whatsoever...
+
+
+type Maybe a
+    = Just a
+    | Nothing
+
+
+val1 : Maybe Int
+val1 =
+    Nothing
+
+
+val2 : Maybe Int
+val2 =
+    Just 42
+
+
+
+-- WHAT'S THE RESULT, ANYWAYS? - sometimes things fail, sometomes they are ok
+--
+-- type Result err success
+--     = Error error
+--     | Ok success
